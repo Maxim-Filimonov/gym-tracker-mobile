@@ -30,7 +30,7 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js",
+    "test": "node node_modules/jest/bin/jest.js --coverage",
     "storybook": "concurrently --kill-others \"storybook start -p 7007\" \"REACT_NATIVE_STORYBOOK=true react-native-scripts ios\"",
     "lint": "./node_modules/.bin/eslint ."
   },
@@ -41,7 +41,16 @@
     },
     "setupFiles": [
       "./src/tests/setupEnzyme.js"
-    ]
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    },
+    "coverageReporters": ["json"]
   },
   "dependencies": {
     "expo": "^25.0.0",
