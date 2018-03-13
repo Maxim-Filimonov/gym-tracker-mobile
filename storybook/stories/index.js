@@ -20,6 +20,8 @@ storiesOf('Button', module)
   ))
   .add('with some emoji', () => (
     <Button onPress={action('clicked-emoji')}>
-      <Text>😀 😎 👍 💯</Text>
+      <Text>
+        <span role="img" aria-label="A handful of emojis">😀 😎 👍 💯</span>
+      </Text>
     </Button>
   ));
