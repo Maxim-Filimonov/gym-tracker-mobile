@@ -1,5 +1,11 @@
 {
   "expo": {
-    "sdkVersion": "25.0.0"
+    "name": "Gym Tracker",
+    "description": "An app that allows you to track your gym weight lifting sessions",
+    "slug": "gym-tracker-mobile",
+    "sdkVersion": "25.0.0",
+    "privacy": "unlisted",
+    "version": "0.0.1",
+    "orientation": "portrait"
   }
 }
