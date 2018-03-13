@@ -3,6 +3,9 @@ node_js: node
 cache:
   directories:
     - node_modules
+before_script:
+  - npm install -g exp
 script:
   - yarn run lint
   - yarn test
+  - exp publish
