@@ -8,4 +8,5 @@ before_script:
 script:
   - yarn run lint
   - yarn test
+  - exp login -u $EXP_USERNAME -p $EXP_PASSWORD
   - exp publish
