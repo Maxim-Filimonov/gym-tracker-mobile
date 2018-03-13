@@ -31,7 +31,7 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "test": "node node_modules/jest/bin/jest.js --coverage",
-    "storybook": "concurrently --kill-others \"storybook start -p 7007\" \"REACT_NATIVE_STORYBOOK=true react-native-scripts ios\"",
+    "storybook": "concurrently --kill-others \"storybook start -p 7007\" \"REACT_NATIVE_STORYBOOK=true react-native-scripts start\"",
     "lint": "./node_modules/.bin/eslint ."
   },
   "jest": {
