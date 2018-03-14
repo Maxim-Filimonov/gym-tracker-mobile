@@ -47,3 +47,9 @@ The MVP will only implement PT Provided Training Sessions & Exercises part of th
 TBC
 
 ## MVP App Screenshots
+
+TBC
+
+## Wireframes
+
+[Gym Tracker Mobile App - Wireframes]( https://alexb-gt-wireframes.netlify.com/)
