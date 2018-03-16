@@ -8,6 +8,11 @@ import { linkTo } from '@storybook/addon-links';
 import Button from './Button';
 import CenterView from './CenterView';
 import Welcome from './Welcome';
+import Header from '../../src/components/Header';
+
+storiesOf('Header', module)
+  .add('default', () => <Header title="Gym Tracker" />)
+  .add('with slogan', () => <Header title="Gym Tracker" slogan="my cool slogan" />)
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
