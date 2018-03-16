@@ -53,3 +53,13 @@ TBC
 ## Wireframes
 
 [Gym Tracker Mobile App - Wireframes]( https://alexb-gt-wireframes.netlify.com/)
+
+## App Screen List
+
+* Landing page screen to login 
+* Screen for listing all the training programs
+* Screen for adding/editing sets for exercises
+
+## User Flow Diagram
+
+![Gym Tracker Mobile App - User Flow](https://github.com/abandisch/gym-tracker-mobile/blob/master/resources/mobile-app-user-flow.jpg)
