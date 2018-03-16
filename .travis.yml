@@ -3,10 +3,15 @@ node_js: node
 cache:
   directories:
     - node_modules
-before_script:
-  - npm install -g exp
 script:
   - yarn run lint
   - yarn test
+before_deploy:
+  - npm install -g exp
   - exp login -u $EXP_USERNAME -p $EXP_PASSWORD
-  - exp publish
+deploy:
+ provider: script
+ script: exp publish
+ skip_cleanup: true
+ on:
+   branch: master
