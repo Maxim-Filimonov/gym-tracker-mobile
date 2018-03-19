@@ -1,1 +1,3 @@
 exports.FACEBOOK_APP_ID = '182710952339837';
+exports.GOOGLE_ANDROID_CLIENT_ID = '698412195965-6r19vionf1ehiptgqs49gdoedtd2jmho.apps.googleusercontent.com';
+exports.GOOGLE_IOS_CLIENT_ID = '698412195965-11vilao62ag1r9akvlfqo3nc6pdn7omg.apps.googleusercontent.com';

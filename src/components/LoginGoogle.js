@@ -2,12 +2,13 @@ import React from 'react';
 import Expo from 'expo';
 import { StyleSheet } from 'react-native';
 import LoginButton from './LoginButton';
+import { GOOGLE_ANDROID_CLIENT_ID, GOOGLE_IOS_CLIENT_ID } from '../config';
 
 async function onPressLogin() {
   try {
     const result = await Expo.Google.logInAsync({
-      androidClientId: '698412195965-6r19vionf1ehiptgqs49gdoedtd2jmho.apps.googleusercontent.com',
-      iosClientId: '698412195965-11vilao62ag1r9akvlfqo3nc6pdn7omg.apps.googleusercontent.com',
+      androidClientId: GOOGLE_ANDROID_CLIENT_ID,
+      iosClientId: GOOGLE_IOS_CLIENT_ID,
       scopes: ['profile', 'email'],
     });
     console.log('result:', result);
