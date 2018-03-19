@@ -11,6 +11,12 @@ import Welcome from './Welcome';
 import Header from '../../src/components/Header';
 import AppFooter from '../../src/components/AppFooter';
 import LoginFacebook from '../../src/components/LoginFacebook';
+import LandingPage from '../../src/components/LandingPage';
+import Intro from '../../src/components/Intro';
+
+storiesOf('Landing Page', module)
+  .add('default', () => <LandingPage />)
+  .add('Intro Text', () => <Intro />);
 
 storiesOf('App Header', module)
   .add('default', () => <Header title="Gym Tracker" />)

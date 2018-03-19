@@ -6,23 +6,20 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#012940',
     flexDirection: 'column',
-    height: 100,
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'stretch',
+    padding: 10,
   },
   appName: {
-    fontSize: 20,
     color: '#eee',
-    paddingBottom: 8,
+    paddingBottom: 5,
   },
   author: {
-    fontSize: 14,
     color: '#eee',
-    paddingBottom: 4,
+    paddingBottom: 3,
   },
   copyright: {
-    fontSize: 14,
     color: '#eee',
   },
 });
