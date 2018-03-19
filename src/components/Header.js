@@ -4,8 +4,7 @@ import { Text, StyleSheet, ImageBackground } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column',
-    height: 100,
+    height: 150,
     backgroundColor: '#003366',
     alignItems: 'center',
     justifyContent: 'center',

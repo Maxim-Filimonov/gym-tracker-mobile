@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'stretch',
-    padding: 10,
+    padding: 15,
   },
   appName: {
     color: '#eee',

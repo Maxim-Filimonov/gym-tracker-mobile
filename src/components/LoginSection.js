@@ -4,7 +4,6 @@ import LoginWithFacebook from './LoginFacebook';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingLeft: 15,
     paddingRight: 15,
     paddingTop: 20,

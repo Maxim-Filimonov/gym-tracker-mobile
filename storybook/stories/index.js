@@ -15,8 +15,10 @@ import LandingPage from '../../src/components/LandingPage';
 import Intro from '../../src/components/Intro';
 
 storiesOf('Landing Page', module)
-  .add('default', () => <LandingPage />)
-  .add('Intro Text', () => <Intro />);
+  .add('default', () => <LandingPage />);
+
+storiesOf('App Intro', module)
+  .add('default', () => <Intro />);
 
 storiesOf('App Header', module)
   .add('default', () => <Header title="Gym Tracker" />)
