@@ -1,7 +1,7 @@
 import React from 'react';
 import Expo from 'expo';
-import { Alert, StyleSheet, Text } from 'react-native';
-import Button from './GenericButton';
+import { Alert, StyleSheet } from 'react-native';
+import LoginButton from './LoginButton';
 import { FACEBOOK_APP_ID } from '../config';
 
 async function onPressLogin() {
@@ -23,23 +23,23 @@ async function onPressLogin() {
 }
 
 const styles = StyleSheet.flatten({
-  fbButtonStyle: {
+  buttonStyle: {
     alignItems: 'center',
     backgroundColor: '#3B5998',
     padding: 10,
     borderRadius: 3,
     maxWidth: 230,
   },
-  textStyles: {
+  textStyle: {
     color: 'white',
     fontSize: 16,
   },
 });
 
-const FacebookLoginButton = () => (
-  <Button style={styles.fbButtonStyle} onPress={onPressLogin}>
-    <Text style={styles.textStyles}>Continue with Facebook</Text>
-  </Button>
+const LoginFacebook = () => (
+  <LoginButton styles={styles} onPress={onPressLogin}>
+    Continue with Facebook
+  </LoginButton>
 );
 
-export default FacebookLoginButton;
+export default LoginFacebook;

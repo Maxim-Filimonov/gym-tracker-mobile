@@ -10,7 +10,7 @@ import CenterView from './CenterView';
 import Welcome from './Welcome';
 import Header from '../../src/components/Header';
 import AppFooter from '../../src/components/AppFooter';
-import FacebookLoginButton from '../../src/components/FacebookLoginButton';
+import LoginFacebook from '../../src/components/LoginFacebook';
 
 storiesOf('App Header', module)
   .add('default', () => <Header title="Gym Tracker" />)
@@ -20,7 +20,7 @@ storiesOf('App Footer', module)
   .add('default', () => (<AppFooter appName="My cool app" appAuthor="Alex Bandisch" />));
 
 storiesOf('Login Buttons', module)
-  .add('Facebook', () => <FacebookLoginButton />);
+  .add('Facebook', () => <LoginFacebook />);
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
