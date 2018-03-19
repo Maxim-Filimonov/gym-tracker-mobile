@@ -11,6 +11,7 @@ import Welcome from './Welcome';
 import Header from '../../src/components/Header';
 import AppFooter from '../../src/components/AppFooter';
 import LoginFacebook from '../../src/components/LoginFacebook';
+import LoginGoogle from '../../src/components/LoginGoogle';
 import LandingPage from '../../src/components/LandingPage';
 import Intro from '../../src/components/Intro';
 
@@ -28,7 +29,8 @@ storiesOf('App Footer', module)
   .add('default', () => (<AppFooter appName="My cool app" appAuthor="Alex Bandisch" />));
 
 storiesOf('Login Buttons', module)
-  .add('Facebook', () => <LoginFacebook />);
+  .add('Facebook', () => <LoginFacebook />)
+  .add('Google', () => <LoginGoogle />);
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 

@@ -28,7 +28,8 @@ const styles = StyleSheet.flatten({
     backgroundColor: '#3B5998',
     padding: 10,
     borderRadius: 3,
-    maxWidth: 230,
+    width: 230,
+    marginBottom: 8,
   },
   textStyle: {
     color: 'white',
