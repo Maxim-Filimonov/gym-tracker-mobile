@@ -2,7 +2,7 @@ import React from 'react';
 import Expo from 'expo';
 import { Alert, StyleSheet } from 'react-native';
 import LoginButton from './LoginButton';
-import { FACEBOOK_APP_ID } from '../config';
+import { FACEBOOK_APP_ID } from '../../config';
 
 async function onPressLogin() {
   const {

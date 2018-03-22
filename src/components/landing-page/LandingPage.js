@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import Header from './Header';
+import Header from '../Header';
 import Intro from './Intro';
 import LoginSection from './LoginSection';
-import AppFooter from './AppFooter';
+import AppFooter from '../AppFooter';
 
 const styles = StyleSheet.create({
   container: {

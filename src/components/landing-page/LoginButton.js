@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text } from 'react-native';
-import Button from './GenericButton';
+import Button from '../GenericButton';
 
 const LoginButton = ({ onPress, styles, children }) => (
   <Button style={styles.buttonStyle} onPress={onPress}>

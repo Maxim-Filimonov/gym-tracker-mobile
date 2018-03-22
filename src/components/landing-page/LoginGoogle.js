@@ -2,7 +2,7 @@ import React from 'react';
 import Expo from 'expo';
 import { StyleSheet } from 'react-native';
 import LoginButton from './LoginButton';
-import { GOOGLE_ANDROID_CLIENT_ID, GOOGLE_IOS_CLIENT_ID } from '../config';
+import { GOOGLE_ANDROID_CLIENT_ID, GOOGLE_IOS_CLIENT_ID } from '../../config';
 
 async function onPressLogin() {
   try {
