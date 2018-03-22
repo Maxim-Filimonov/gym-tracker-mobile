@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import LoginWithFacebook from './LoginFacebook';
-import LoginWithGoogle from './LoginGoogle';
+import LoginButtonFacebook from '../ButtonLogin/LoginButtonFacebook';
+import LoginButtonGoogle from '../ButtonLogin/LoginButtonGoogle';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
 const LoginSection = () => (
   <View style={styles.container}>
     <Text style={styles.text}>Login with your social media account to start</Text>
-    <LoginWithFacebook />
-    <LoginWithGoogle />
+    <LoginButtonFacebook />
+    <LoginButtonGoogle />
   </View>
 );
 //
