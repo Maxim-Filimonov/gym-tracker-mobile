@@ -1,8 +1,11 @@
 import React from 'react';
-import LandingPage from './components/LandingPage';
+import GraphQLWrapper from './containers/GraphQLWrapper';
+import LandingPage from './components/landing-page/LandingPage';
 
 export default function App() {
   return (
-    <LandingPage />
+    <GraphQLWrapper>
+      <LandingPage />
+    </GraphQLWrapper>
   );
 }

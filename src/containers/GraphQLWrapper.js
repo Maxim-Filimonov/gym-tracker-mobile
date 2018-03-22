@@ -13,14 +13,15 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const GraphqlWrapper = ({ children }) => (
+const GraphQLWrapper = ({ children }) => (
   <ApolloProvider client={client}>
     {children}
   </ApolloProvider>
 );
 
-export default GraphqlWrapper;
-
-GraphqlWrapper.propTypes = {
+GraphQLWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export default GraphQLWrapper;
+

@@ -14,15 +14,15 @@ import LoginButtonFacebook from '../../src/components/buttons/LoginButtonFaceboo
 import LoginButtonGoogle from '../../src/components/buttons/LoginButtonGoogle';
 import LandingPage from '../../src/components/landing-page/LandingPage';
 import Intro from '../../src/components/landing-page/Intro';
-import GraphqlWrapper from '../../src/components/graphql-demo/GraphqlWrapper';
-import DemoList from '../../src/components/graphql-demo/DemoList';
+import GraphQLWrapper from '../../src/containers/GraphQLWrapper';
+import DemoList from '../../src/components/graphql-demo-list/DemoList';
 import ProgramButton from '../../src/components/buttons/ProgramButton';
 
 storiesOf('Training Program List', module)
   .add('default', () => (
-    <GraphqlWrapper>
+    <GraphQLWrapper>
       <DemoList />
-    </GraphqlWrapper>
+    </GraphQLWrapper>
   ));
 
 storiesOf('Landing Page', module)

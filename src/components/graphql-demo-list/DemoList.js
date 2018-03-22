@@ -4,7 +4,6 @@ import gql from 'graphql-tag';
 import { compose } from 'recompose';
 import { graphql, withApollo } from 'react-apollo';
 
-
 const query = gql`
   {allPrograms {
     id

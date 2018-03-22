@@ -50,12 +50,18 @@
         "statements": 50
       }
     },
-    "coverageReporters": ["json"]
+    "coverageReporters": [
+      "json"
+    ]
   },
   "dependencies": {
+    "apollo-boost": "^0.1.3",
     "expo": "^25.0.0",
+    "graphql": "^0.13.2",
     "prop-types": "^15.6.1",
     "react": "16.2.0",
-    "react-native": "0.52.0"
+    "react-apollo": "^2.0.4",
+    "react-native": "0.52.0",
+    "recompose": "^0.26.0"
   }
 }
