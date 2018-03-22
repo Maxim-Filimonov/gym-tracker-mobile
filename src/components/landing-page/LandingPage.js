@@ -4,6 +4,7 @@ import Header from '../Header';
 import Intro from './Intro';
 import LoginSection from './LoginSection';
 import AppFooter from '../AppFooter';
+import { APP_NAME, APP_AUTHOR, APP_SLOGAN } from '../../config';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,12 +18,12 @@ const styles = StyleSheet.create({
 
 const LandingPage = () => (
   <View style={styles.container}>
-    <Header title="GymBuddy" slogan="strength & exercise tracking" />
+    <Header title={APP_NAME} slogan={APP_SLOGAN} />
     <ScrollView contentContainerStyle={styles.svContainer}>
       <Intro />
       <LoginSection />
     </ScrollView>
-    <AppFooter appName="GymBuddy" appAuthor="Alex Bandisch" />
+    <AppFooter appName={APP_NAME} appAuthor={APP_AUTHOR} />
   </View>
 );
 export default LandingPage;
