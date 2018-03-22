@@ -10,13 +10,13 @@ import CenterView from './CenterView';
 import Welcome from './Welcome';
 import Header from '../../src/components/Header';
 import AppFooter from '../../src/components/AppFooter';
-import LoginButtonFacebook from '../../src/components/ButtonLogin/LoginButtonFacebook';
-import LoginButtonGoogle from '../../src/components/ButtonLogin/LoginButtonGoogle';
+import LoginButtonFacebook from '../../src/components/buttons/LoginButtonFacebook';
+import LoginButtonGoogle from '../../src/components/buttons/LoginButtonGoogle';
 import LandingPage from '../../src/components/landing-page/LandingPage';
 import Intro from '../../src/components/landing-page/Intro';
 import GraphqlWrapper from '../../src/components/graphql-demo/GraphqlWrapper';
 import DemoList from '../../src/components/graphql-demo/DemoList';
-import ProgramButton from '../../src/components/ProgramButton';
+import ProgramButton from '../../src/components/buttons/ProgramButton';
 
 storiesOf('Training Program List', module)
   .add('default', () => (
