@@ -18,62 +18,17 @@ import GraphQLWrapper from '../../src/containers/GraphQLWrapper';
 import TrainingProgramList from '../../src/containers/TrainingProgramList';
 import TrainingProgramListItem from '../../src/components/training-program-select-page/TrainingProgramListItem';
 import TrainingProgramPage from '../../src/components/training-program-select-page/TrainingProgramPage';
-import ProgramButton from '../../src/components/buttons/ProgramButton';
+import ProgramHeading from '../../src/components/exercises-page/ProgramHeading';
 
-const programList = {
-  allPrograms: [
-    {
-      id: 'ab463b8b-a76c-4f6a-a726-75ab5730b69b',
-      name: 'Sit odio dolor',
-      summary: 'Accusantium laborum voluptatem debitis dolorum enim.',
-    },
-    {
-      id: '56c355d8-1a81-432e-97a3-c48dd86a5c5d',
-      name: 'Quam eum',
-      summary: 'Accusantium laborum voluptatem debitis dolorum enim.',
-    },
-    {
-      id: 'ccc3252f-9a8c-46b5-8876-d0a0011a56f2',
-      name: 'Quis enim',
-      summary: 'Accusantium laborum voluptatem debitis dolorum enim.',
-    },
-    {
-      id: 'a66b89f5-6151-43ec-98fd-4a3e5157a70d',
-      name: 'Ut esse eveniet',
-      summary: 'Accusantium laborum voluptatem debitis dolorum enim.',
-    },
-    {
-      id: 'e37d9b0c-9eb4-4011-851f-73c0acedb8ce',
-      name: 'Dolor minus ad',
-      summary: 'Accusantium laborum voluptatem debitis dolorum enim.',
-    },
-    {
-      id: '73e9acbb-573e-4f24-af42-ac390ec4d12f',
-      name: 'Voluptate voluptas totam',
-      summary: 'Accusantium laborum voluptatem debitis dolorum enim.',
-    },
-    {
-      id: 'c463acd5-59b6-4654-9ef9-c7329e9a3fe0',
-      name: 'Sed ut debitis',
-      summary: 'Accusantium laborum voluptatem debitis dolorum enim.',
-    },
-    {
-      id: '469e32fa-8e56-48e5-8e1a-2288a4c6c510',
-      name: 'Placeat fugit magni',
-      summary: 'Accusantium laborum voluptatem debitis dolorum enim.',
-    },
-    {
-      id: '817a2564-fce4-464c-bf54-7aba24bd5ade',
-      name: 'Et aut sint',
-      summary: 'Accusantium laborum voluptatem debitis dolorum enim.',
-    },
-    {
-      id: '55b93dc3-ea7b-4ef5-8681-af08d651a164',
-      name: 'At aut earum',
-      summary: 'Accusantium laborum voluptatem debitis dolorum enim.',
-    },
-  ],
-};
+storiesOf('Exercise Program Page', module)
+  .add('Program Heading', () => {
+    const props = {
+      programName: 'Jumbo Exercises',
+      week: 'Week 1',
+      day: 'day 2',
+    };
+    return <ProgramHeading {...props} />;
+  });
 
 storiesOf('Training Program Page', module)
   .add('default', () => (
@@ -83,7 +38,7 @@ storiesOf('Training Program Page', module)
 storiesOf('Training Program List', module)
   .add('default', () => (
     <GraphQLWrapper>
-      <TrainingProgramList programList={programList} />
+      <TrainingProgramList />
     </GraphQLWrapper>
   ))
   .add('List Item', () => {
@@ -113,8 +68,7 @@ storiesOf('App Footer', module)
 
 storiesOf('Buttons', module)
   .add('Facebook Login', () => <LoginButtonFacebook />)
-  .add('Google Login', () => <LoginButtonGoogle />)
-  .add('Training Program', () => <ProgramButton />);
+  .add('Google Login', () => <LoginButtonGoogle />);
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
