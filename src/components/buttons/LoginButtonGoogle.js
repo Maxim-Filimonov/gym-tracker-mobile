@@ -1,8 +1,10 @@
 import React from 'react';
 import Expo from 'expo';
+import { connect } from 'react-redux';
 import { StyleSheet } from 'react-native';
 import LoginButton from './LoginButton';
-import { GOOGLE_ANDROID_CLIENT_ID, GOOGLE_IOS_CLIENT_ID } from '../../config';
+import { loginWithGoogle } from '../../actions';
+// import { GOOGLE_ANDROID_CLIENT_ID, GOOGLE_IOS_CLIENT_ID } from '../../config';
 
 async function onPressLogin() {
   try {
@@ -36,10 +38,10 @@ const styles = StyleSheet.flatten({
   },
 });
 
-const LoginGoogle = () => (
-  <LoginButton styles={styles} onPress={onPressLogin}>
+const LoginGoogle = ({ dispatch }) => (
+  <LoginButton styles={styles} onPress={() => dispatch(loginWithGoogle())}>
     Sign in with Google
   </LoginButton>
 );
 
-export default LoginGoogle;
+export default connect()(LoginGoogle);
