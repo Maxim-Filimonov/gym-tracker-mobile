@@ -5,7 +5,7 @@ const user = (state = {}, action) => {
     case types.LOGIN_FACEBOOK_SUCCESS:
       return { ...state, ...action.user };
     case types.FETCH_JWT_SUCCESS:
-      return { ...state, ...{ jwtToken: action.jwtToken } };
+      return { ...state, ...{ gymTrackerJWT: action.jwt } };
     default:
       return state;
   }

@@ -12,7 +12,7 @@ export const fetchJWT = user => (dispatch) => {
       (response) => {
         dispatch({
           type: types.FETCH_JWT_SUCCESS,
-          jwtToken: response.jwt_token,
+          jwt: response.jwt,
         });
       },
       (error) => {
@@ -32,14 +32,15 @@ async function processFacebookLogin() {
     permissions: ['public_profile', 'email'],
   });
   if (type === 'success') {
-    // Get the user's name and email using Facebook's Graph API
-    const response = await fetch(`https://graph.facebook.com/me?access_token=${token}&fields=id,name,email`);
-    // return response.json(); // userData = {id: string, email: string, name: string }
-    const { id: socialId, ...rest } = await response.json();
-    return { socialId, ...rest };
-    // userData = {id: string, email: string, name: string }
-    // const userData = await response.json();
-    // return userData;
+    const response = await fetch(`https://graph.facebook.com/me?access_token=${token}&fields=id,name,email,picture`);
+    // response.json() = {
+    // id: string, email: string, name: string
+    // picture: { data: { image, ...rest} } }
+    const { id: socialUserId, picture, ...rest } = await response.json();
+    return { socialUserId, image: picture.data.url, ...rest };
+  }
+  if (type === 'cancel') {
+    return Promise.reject(new Error('User cancelled Facebook login'));
   }
   return Promise.reject(new Error('Unable to login with Facebook'));
 }
@@ -55,14 +56,13 @@ export const loginWithFacebook = () => (dispatch) => {
           type: types.LOGIN_FACEBOOK_SUCCESS,
           user,
         });
-        return user;
+        return dispatch(fetchJWT(user));
       },
       (error) => {
         dispatch({
           type: types.LOGIN_FACEBOOK_FAILURE,
-          error: error.message || 'Something went wrong logging in with Facebook',
+          error: error.message || 'Problem logging in with Facebook.',
         });
       },
-    )
-    .then(user => dispatch(fetchJWT(user)));
+    );
 };
