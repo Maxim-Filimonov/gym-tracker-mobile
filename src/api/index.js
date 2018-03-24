@@ -1,4 +1,3 @@
-import { v4 } from 'node-uuid';
 
 const fakeDatabase = {
   gymGoers: [],
@@ -6,11 +5,11 @@ const fakeDatabase = {
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-export const loginUser = user => (
+export const fetchJWT = user => (
   delay(500) // simulate network request round trip time
     .then(() => {
       const gymGoer = { // create a new gym goer
-        id: v4(),
+        id: 'somefakeidhere',
         email: user.email,
       };
       fakeDatabase.gymGoers.push(gymGoer); // add to the DB
@@ -19,3 +18,5 @@ export const loginUser = user => (
       };
     })
 );
+
+export const fakeFacebookLogin = () => delay(500).then(() => ({ id: '1747241378665802', name: 'Alex Bandisch', email: 'alex@bandisch.com' }));

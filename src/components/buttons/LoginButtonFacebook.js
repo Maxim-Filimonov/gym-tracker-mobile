@@ -1,8 +1,10 @@
 import React from 'react';
 import Expo from 'expo';
+import { connect } from 'react-redux';
 import { Alert, StyleSheet } from 'react-native';
 import LoginButton from './LoginButton';
 import { FACEBOOK_APP_ID } from '../../config';
+import { loginWithFacebook } from '../../actions';
 
 async function onPressLogin() {
   const {
@@ -37,10 +39,10 @@ const styles = StyleSheet.flatten({
   },
 });
 
-const LoginFacebook = () => (
-  <LoginButton styles={styles} onPress={onPressLogin}>
+const LoginFacebook = ({ dispatch }) => (
+  <LoginButton styles={styles} onPress={() => dispatch(loginWithFacebook())}>
     Continue with Facebook
   </LoginButton>
 );
 
-export default LoginFacebook;
+export default connect()(LoginFacebook);

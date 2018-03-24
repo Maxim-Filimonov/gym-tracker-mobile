@@ -21,6 +21,10 @@ import TrainingProgramPage from '../../src/components/training-program-select-pa
 import ProgramHeading from '../../src/components/exercises-page/ProgramHeading';
 import Summary from '../../src/components/exercises-page/Summary';
 import Exercise from '../../src/components/exercises-page/Exercise';
+import { Provider } from 'react-redux';
+import configureStore from '../../configureStore';
+
+const store = configureStore();
 
 storiesOf('Exercise', module)
   .add('Exercise - default', () => {
@@ -111,7 +115,11 @@ storiesOf('Training Program List', module)
   });
 
 storiesOf('Landing Page', module)
-  .add('default', () => <LandingPage />);
+  .add('default', () => (
+    <Provider store={store}>
+      <LandingPage />
+    </Provider>
+  ));
 
 storiesOf('App Intro', module)
   .add('default', () => <Intro />);
@@ -124,8 +132,8 @@ storiesOf('App Footer', module)
   .add('default', () => (<AppFooter appName="My cool app" appAuthor="Alex Bandisch" />));
 
 storiesOf('Buttons', module)
-  .add('Facebook Login', () => <LoginButtonFacebook />)
-  .add('Google Login', () => <LoginButtonGoogle />);
+  .add('Facebook Login', () => <Provider store={store}><LoginButtonFacebook /></Provider>)
+  .add('Google Login', () => <Provider store={store}><LoginButtonGoogle /></Provider>);
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
