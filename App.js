@@ -1,5 +1,5 @@
 import StorybookUI from './storybook';
 
-import App from './src/App';
+import Root from './src/components/Root';
 
-module.exports = process.env.REACT_NATIVE_STORYBOOK ? StorybookUI : App;
+module.exports = process.env.REACT_NATIVE_STORYBOOK ? StorybookUI : Root;
