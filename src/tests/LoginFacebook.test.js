@@ -1,10 +1,10 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import LoginFacebook from '../components/LoginFacebook';
+import LoginButtonFacebook from '../containers/LoginButtonFacebook';
 
-describe('<LoginFacebook />', () => {
+describe('<LoginButtonFacebook />', () => {
   it('renders without crashing', () => {
-    shallow(<LoginFacebook />);
+    shallow(<LoginButtonFacebook />);
   });
   it('returns the Facebook details of the user', () => {
     global.fetch = jest.fn().mockImplementation(() =>
@@ -17,7 +17,7 @@ describe('<LoginFacebook />', () => {
           };
         },
       }));
-    const wrapper = shallow(<LoginFacebook />);
+    const wrapper = shallow(<LoginButtonFacebook />);
     wrapper.simulate('press');
   });
 });

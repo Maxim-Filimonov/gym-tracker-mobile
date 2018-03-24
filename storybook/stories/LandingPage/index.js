@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react-native';
 import { Provider } from 'react-redux';
 import LandingPage from '../../../src/components/landing-page/LandingPage';
 import Intro from '../../../src/components/landing-page/Intro';
-import LoginButtonFacebook from '../../../src/components/buttons/LoginButtonFacebook';
-import LoginButtonGoogle from '../../../src/components/buttons/LoginButtonGoogle';
+import LoginButtonFacebook from '../../../src/containers/LoginButtonFacebook';
+import LoginButtonGoogle from '../../../src/containers/LoginButtonGoogle';
 import configureStore from '../../../configureStore';
 
 const store = configureStore();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import LoginButtonFacebook from '../buttons/LoginButtonFacebook';
-import LoginButtonGoogle from '../buttons/LoginButtonGoogle';
+import LoginButtonFacebook from '../../containers/LoginButtonFacebook';
+import LoginButtonGoogle from '../../containers/LoginButtonGoogle';
 
 const styles = StyleSheet.create({
   container: {

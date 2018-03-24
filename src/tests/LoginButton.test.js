@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import LoginButton from '../components/LoginButton';
+import LoginButton from '../components/buttons/LoginButton';
 
 describe('<LoginButton />', () => {
   it('renders without crashing', () => {
