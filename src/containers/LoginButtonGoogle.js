@@ -1,30 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { StyleSheet } from 'react-native';
-import LoginButton from '../components/buttons/LoginButton';
+import { Button } from 'react-native-elements';
 import { loginWithGoogle } from '../actions';
 
-const styles = StyleSheet.flatten({
-  buttonStyle: {
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    padding: 10,
-    borderRadius: 3,
-    width: 230,
-    marginBottom: 8,
-  },
-  textStyle: {
-    color: '#222',
-    fontSize: 16,
-  },
-});
-
-const LoginGoogle = ({ dispatch }) => (
-  <LoginButton styles={styles} onPress={() => dispatch(loginWithGoogle())}>
-    Sign in with Google
-  </LoginButton>
-);
+const LoginGoogle = ({ dispatch }) => {
+  const props = {
+    onPress: () => dispatch(loginWithGoogle()),
+    icon: { name: 'google', type: 'font-awesome', color: 'white' },
+    title: 'Sign in with Google',
+    buttonStyle: {
+      backgroundColor: '#4185f4',
+      marginBottom: 10,
+    },
+    color: 'white',
+    fontWeight: 'bold',
+    rounded: true,
+  };
+  return <Button {...props} />;
+};
 
 LoginGoogle.propTypes = {
   dispatch: PropTypes.func.isRequired,

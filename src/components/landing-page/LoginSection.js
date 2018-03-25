@@ -10,11 +10,10 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 20,
     backgroundColor: '#eee',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
   text: {
-    marginBottom: 8,
+    marginBottom: 12,
+    textAlign: 'center',
     fontWeight: 'bold',
   },
 });

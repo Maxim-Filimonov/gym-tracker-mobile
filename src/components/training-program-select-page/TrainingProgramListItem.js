@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
-import Button from '../buttons/Button';
+import { Button } from 'react-native-elements';
 
 const styles = {
   container: {
@@ -9,30 +9,17 @@ const styles = {
     marginLeft: 5,
     marginRight: 5,
   },
-  showButton: {
-    backgroundColor: '#003366',
-    padding: 15,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  selectButton: {
-    backgroundColor: '#31bb5a',
-    padding: 15,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 10,
-  },
   text: {
-    color: '#eee',
-  },
-  summaryContainer: {
-    marginTop: 10,
-    marginBottom: 10,
+    color: '#222',
+    paddingRight: 15,
+    paddingLeft: 15,
+    paddingBottom: 15,
   },
   heading: {
     fontWeight: 'bold',
     fontSize: 16,
-    marginBottom: 10,
+    padding: 15,
+    color: '#222',
   },
 };
 
@@ -49,20 +36,30 @@ class TrainingProgramListItem extends React.Component {
 
   render() {
     const { name, summary, onSelectProgram } = this.props;
+    const selectButtonProps = {
+      rightIcon: { name: 'check-circle' },
+      title: 'Select Training Program',
+      onPress: onSelectProgram,
+      buttonStyle: {
+        backgroundColor: '#31bb5a',
+      },
+    };
+    const programButtonProps = {
+      rightIcon: { name: 'info-outline' },
+      title: name,
+      onPress: this.handlePressProgram,
+      buttonStyle: {
+        backgroundColor: '#003366',
+      },
+    };
     return (
       <View style={styles.container}>
-        <Button style={styles.showButton} onPress={this.handlePressProgram}>
-          <Text style={styles.text}>
-            {name} &#9432;
-          </Text>
-        </Button>
+        <Button {...programButtonProps} />
         {this.state.showSummary && (
-          <View style={styles.summaryContainer}>
+          <View>
             <Text style={styles.heading}>Program Summary</Text>
-            <Text>{summary}</Text>
-            <Button style={styles.selectButton} onPress={onSelectProgram}>
-              <Text style={styles.text}>Select Training Program &#10003;</Text>
-            </Button>
+            <Text style={styles.text}>{summary}</Text>
+            <Button {...selectButtonProps} />
           </View>)}
       </View>
     );

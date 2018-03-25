@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
-import Button from '../../buttons/Button';
+import { Button } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   container: {
@@ -50,23 +50,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const buttonStyle = StyleSheet.flatten({
-  button: {
-    width: 200,
-    backgroundColor: 'green',
-    paddingTop: 6,
-    paddingBottom: 6,
-    paddingLeft: 10,
-    paddingRight: 10,
-    marginTop: 5,
-    marginBottom: 5,
-  },
-  text: {
-    textAlign: 'center',
-    color: 'white',
-  },
-});
-
 const Exercise = ({
   name, lastSession, targets, ptNote,
 }) => (
@@ -94,9 +77,7 @@ const Exercise = ({
         <Text style={styles.td}>Click &apos;Add Set&apos; to record your set</Text>
       </View>
       <View style={styles.row}>
-        <Button style={buttonStyle.button}>
-          <Text style={buttonStyle.text}>Add New Set</Text>
-        </Button>
+        <Button buttonStyle={{ backgroundColor: 'green', margin: 10 }} title="Add New Set" />
       </View>
       <View style={styles.targets}>
         <Text style={styles.th}>Target Sets & Reps</Text>
@@ -113,6 +94,12 @@ const Exercise = ({
     </View>
   </View>
 );
+
+/*
+        <Button style={buttonStyle.button}>
+          <Text style={buttonStyle.text}>Add New Set</Text>
+        </Button>
+ */
 
 Exercise.propTypes = {
   name: PropTypes.string.isRequired,
