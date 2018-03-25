@@ -26,7 +26,7 @@ export const fetchJWT = user => (dispatch) => {
     );
 };
 
-async function processFacebookLogin() {
+export async function processFacebookLogin() {
   const {
     type, token,
   } = await Expo.Facebook.logInWithReadPermissionsAsync(FACEBOOK_APP_ID, {
@@ -51,7 +51,7 @@ async function processFacebookLogin() {
   return Promise.reject(new Error('Unable to login with Facebook'));
 }
 
-async function processGoogleLogin() {
+export async function processGoogleLogin() {
   try {
     const result = await Expo.Google.logInAsync({
       androidClientId: GOOGLE_ANDROID_CLIENT_ID,
