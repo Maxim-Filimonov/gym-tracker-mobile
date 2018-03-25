@@ -28,7 +28,7 @@ export const fetchJWT = user => (dispatch) => {
 
 export async function processFacebookLogin() {
   const {
-    type, token,
+    type, token, expires,
   } = await Expo.Facebook.logInWithReadPermissionsAsync(FACEBOOK_APP_ID, {
     permissions: ['public_profile', 'email'],
   });
@@ -41,7 +41,7 @@ export async function processFacebookLogin() {
     return {
       socialUserId,
       image: picture.data.url,
-      socialAppTokens: { type: 'Facebook' },
+      socialAppTokens: { type: 'Facebook', accessToken: token, expires },
       ...rest,
     };
   }
