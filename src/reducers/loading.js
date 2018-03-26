@@ -5,7 +5,7 @@ const loading = (state = {}, action) => {
     case types.LOGIN_FACEBOOK_REQUEST:
     case types.LOGIN_GOOGLE_REQUEST:
     case types.FETCH_JWT_REQUEST:
-      return { ...state, login: action.loading };
+      return { ...state, login: true };
     case types.LOGIN_FACEBOOK_SUCCESS:
     case types.LOGIN_GOOGLE_SUCCESS:
     case types.FETCH_JWT_SUCCESS:

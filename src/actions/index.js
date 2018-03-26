@@ -6,7 +6,6 @@ import { FACEBOOK_APP_ID, GOOGLE_ANDROID_CLIENT_ID, GOOGLE_IOS_CLIENT_ID } from 
 export const fetchJWT = user => (dispatch) => {
   dispatch({
     type: types.FETCH_JWT_REQUEST,
-    loading: true,
   });
   return api.fetchJWT(user)
     .then(
@@ -83,7 +82,6 @@ export async function processGoogleLogin() {
 export const loginWithFacebook = () => (dispatch) => {
   dispatch({
     type: types.LOGIN_FACEBOOK_REQUEST,
-    loading: true,
   });
   return processFacebookLogin()
     .then(
@@ -106,7 +104,6 @@ export const loginWithFacebook = () => (dispatch) => {
 export const loginWithGoogle = () => (dispatch) => {
   dispatch({
     type: types.LOGIN_GOOGLE_REQUEST,
-    loading: true,
   });
   return processGoogleLogin()
     .then(
