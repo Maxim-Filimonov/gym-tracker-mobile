@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
-import { loginWithFacebook } from '../actions';
+import { loginWithFacebook } from '../actions/login';
 
 const LoginFacebook = ({ dispatch }) => {
   const props = {

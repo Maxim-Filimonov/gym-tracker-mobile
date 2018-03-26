@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
-import { loginWithGoogle } from '../actions';
+import { loginWithGoogle } from '../actions/login';
 
 const LoginGoogle = ({ dispatch }) => {
   const props = {
