@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as login from '../../actions/login';
 import * as types from '../../actions/types';
-import * as socialAppLogin from '../../actions/socialAppLogin';
+import * as expoLogin from '../../actions/expoLogin';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -11,7 +11,7 @@ jest.mock('../../actions', () => ({
   fetchJWT: jest.fn(() => () => Promise.resolve()),
 }));
 
-describe('async actions', () => {
+describe('login async actions', () => {
   describe('loginWithGoogle', () => {
     it('creates a LOGIN_GOOGLE_SUCCESS when logging in a user with Google', () => {
       const mockUser = {
@@ -22,7 +22,7 @@ describe('async actions', () => {
         socialAppTokens: { type: 'Google' },
       };
 
-      socialAppLogin.processGoogleLogin = jest.fn(() => Promise.resolve({ ...mockUser }));
+      expoLogin.processGoogleLogin = jest.fn(() => Promise.resolve({ ...mockUser }));
 
       const expectedActions = [
         { type: types.LOGIN_GOOGLE_REQUEST },
@@ -35,7 +35,23 @@ describe('async actions', () => {
         expect(store.getActions()).toEqual(expectedActions);
       });
     });
+
+    it('creates a LOGIN_GOOGLE_FAILURE when failing to login with Google', () => {
+      expoLogin.processGoogleLogin = jest.fn(() => Promise.reject(new Error('Failed to login with Google')));
+
+      const expectedActions = [
+        { type: types.LOGIN_GOOGLE_REQUEST },
+        { type: types.LOGIN_GOOGLE_FAILURE, error: 'Failed to login with Google' },
+      ];
+
+      const store = mockStore({ user: {}, loading: false });
+
+      return store.dispatch(login.loginWithGoogle()).then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+      });
+    });
   });
+
   describe('loginWithFacebook', () => {
     it('creates a LOGIN_FACEBOOK_SUCCESS when logging in a user with Facebook', () => {
       const mockUser = {
@@ -46,11 +62,26 @@ describe('async actions', () => {
         socialAppTokens: { type: 'Facebook' },
       };
 
-      socialAppLogin.processFacebookLogin = jest.fn(() => Promise.resolve({ ...mockUser }));
+      expoLogin.processFacebookLogin = jest.fn(() => Promise.resolve({ ...mockUser }));
 
       const expectedActions = [
         { type: types.LOGIN_FACEBOOK_REQUEST },
         { type: types.LOGIN_FACEBOOK_SUCCESS, user: { ...mockUser } },
+      ];
+
+      const store = mockStore({ user: {}, loading: false });
+
+      return store.dispatch(login.loginWithFacebook()).then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+      });
+    });
+
+    it('creates a LOGIN_FACEBOOK_FAILURE when failing to login with Facebook', () => {
+      expoLogin.processFacebookLogin = jest.fn(() => Promise.reject(new Error('Failed to login with Facebook')));
+
+      const expectedActions = [
+        { type: types.LOGIN_FACEBOOK_REQUEST },
+        { type: types.LOGIN_FACEBOOK_FAILURE, error: 'Failed to login with Facebook' },
       ];
 
       const store = mockStore({ user: {}, loading: false });
