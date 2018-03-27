@@ -45,5 +45,33 @@ describe('async actions', () => {
         expect(store.getActions()).toEqual(expectedActions);
       });
     });
+
+    it('creates FETCH_JWT_FAILURE if fetching JWT fails', () => {
+      fetchMock
+        .post(
+          `${API_URL}/login`,
+          Promise.reject(new Error('fucked it')),
+        );
+
+      const user = {
+        socialUserId: 'test',
+        image: 'image.jpg',
+        email: 'test@test.com',
+        name: 'test',
+        socialAppTokens: { type: 'Google' },
+      };
+
+      const expectedActions = [
+        { type: types.FETCH_JWT_REQUEST },
+        { type: types.FETCH_JWT_FAILURE, message: 'Problem connecting to GymBuddy.', user: { ...user } },
+      ];
+
+      const store = mockStore({ });
+
+      return store.dispatch(actions.fetchJWT(user)).then(() => {
+        // return of async actions
+        expect(store.getActions()).toEqual(expectedActions);
+      });
+    });
   });
 });
