@@ -50,7 +50,7 @@ describe('async actions', () => {
       fetchMock
         .post(
           `${API_URL}/login`,
-          Promise.reject(new Error('fucked it')),
+          Promise.reject(new Error('An error')),
         );
 
       const user = {
