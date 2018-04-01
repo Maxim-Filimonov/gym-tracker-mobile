@@ -4,6 +4,6 @@ import LoginSection from '../../../components/landing-page/LoginSection';
 
 describe('<LoginSection />', () => {
   it('renders without crashing', () => {
-    shallow(<LoginSection />);
+    shallow(<LoginSection isLoading={false} />);
   });
 });

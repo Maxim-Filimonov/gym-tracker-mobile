@@ -47,12 +47,12 @@ class TrainingProgramList extends React.Component {
         style={styles.list}
         data={programList.allPrograms}
         renderItem={
-          ({ item }) =>
-            (<TrainingProgramListItem
-              onSelectProgram={this.onPressItem(item.id)}
-              {...item} // Contains name and summary
-            />)
-        }
+            ({ item }) =>
+              (<TrainingProgramListItem
+                onSelectProgram={this.onPressItem(item.id)}
+                {...item} // Contains id, name, summary
+              />)
+          }
         keyExtractor={item => item.id}
       />
     );

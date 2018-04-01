@@ -1,6 +1,8 @@
 import * as types from '../actions/types';
 
-const loading = (state = {}, action) => {
+const initialState = { login: false };
+
+const loading = (state = initialState, action) => {
   switch (action.type) {
     case types.LOGIN_FACEBOOK_REQUEST:
     case types.LOGIN_GOOGLE_REQUEST:

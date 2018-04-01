@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import Header from '../Header';
 import Intro from './Intro';
-import LoginSection from './LoginSection';
+import LoginSection from '../../containers/LoginSection';
 import AppFooter from '../AppFooter';
 import { APP_NAME, APP_AUTHOR, APP_SLOGAN } from '../../config';
 

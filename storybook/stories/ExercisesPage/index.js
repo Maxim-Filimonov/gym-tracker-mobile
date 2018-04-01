@@ -3,8 +3,24 @@ import { storiesOf } from '@storybook/react-native';
 import Exercise from '../../../src/components/exercises-page/Exercise';
 import ProgramHeading from '../../../src/components/exercises-page/ProgramHeading';
 import Summary from '../../../src/components/exercises-page/Summary';
+import ExercisesPage from '../../../src/components/exercises-page/ExercisesPage';
+import GraphQLWrapper from '../../../src/containers/GraphQLWrapper';
 
 storiesOf('Exercise Program Page', module)
+  .add('default', () => {
+    const props = {
+      match: {
+        params: {
+          programId: '1742e8f9-2fb7-4dba-9787-4b84dc680d84',
+        },
+      },
+    };
+    return (
+      <GraphQLWrapper>
+        <ExercisesPage {...props} />
+      </GraphQLWrapper>
+    );
+  })
   .add('Program Heading', () => {
     const props = {
       programName: 'Jumbo Exercises',

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 import LoginButtonFacebook from '../../containers/LoginButtonFacebook';
 import LoginButtonGoogle from '../../containers/LoginButtonGoogle';
@@ -18,12 +19,22 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginSection = () => (
+const LoginSection = ({ isLoading }) => (
   <View style={styles.container}>
     <Text style={styles.text}>Login with your social media account to start</Text>
-    <LoginButtonFacebook />
-    <LoginButtonGoogle />
+    {isLoading && <Text>Loading please wait...</Text>}
+    {
+      !isLoading &&
+      <View>
+        <LoginButtonFacebook />
+        <LoginButtonGoogle />
+      </View>
+    }
   </View>
 );
-//
+
+LoginSection.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+};
+
 export default LoginSection;
