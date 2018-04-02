@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link as RouterLink } from 'react-router-native';
 import { View, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 
@@ -37,7 +36,7 @@ class TrainingProgramListItem extends React.Component {
 
   render() {
     const {
-      id, name, summary, onSelectProgram,
+      name, summary, onSelectProgram,
     } = this.props;
     const selectButtonProps = {
       rightIcon: { name: 'check-circle' },

@@ -1,20 +1,25 @@
 import React from 'react';
 import { NativeRouter, Route } from 'react-router-native';
+import { View } from 'react-native';
 import { Provider } from 'react-redux';
 import configureStore from '../../configureStore';
-import App from './App';
+import Home from './Home';
 import GraphQLWrapper from '../containers/GraphQLWrapper';
+import ExercisesPage from '../components/exercises-page/ExercisesPage';
 
 const store = configureStore();
 
 const Root = () => (
-  <NativeRouter>
-    <GraphQLWrapper>
-      <Provider store={store}>
-        <Route path="/" component={App} />
-      </Provider>
-    </GraphQLWrapper>
-  </NativeRouter>
+  <GraphQLWrapper>
+    <Provider store={store}>
+      <NativeRouter>
+        <View style={{ flex: 1 }}>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/exercises/:programId" component={ExercisesPage} />
+        </View>
+      </NativeRouter>
+    </Provider>
+  </GraphQLWrapper>
 );
 
 export default Root;

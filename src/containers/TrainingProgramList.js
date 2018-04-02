@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList, Text, StyleSheet } from 'react-native';
+import { withRouter } from 'react-router-native';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { compose } from 'recompose';
@@ -31,7 +32,8 @@ const styles = StyleSheet.create({
 
 class TrainingProgramList extends React.Component {
   onPressItem = id => () => {
-    console.log('clicked me:', id);
+    const { history } = this.props;
+    history.push(`/exercises/${id}`);
   };
 
   render() {
@@ -61,6 +63,7 @@ class TrainingProgramList extends React.Component {
 
 TrainingProgramList.propTypes = {
   programList: PropTypes.PropTypes.shape({}).isRequired,
+  history: PropTypes.shape({}).isRequired,
   client: PropTypes.shape({}),
 };
 
@@ -69,6 +72,7 @@ TrainingProgramList.defaultProps = {
 };
 
 export default compose(
+  withRouter,
   graphql(trainingProgramQuery, { name: 'programList' }),
   withApollo,
 )(TrainingProgramList);
