@@ -3,11 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
-    marginBottom: 10,
-    paddingLeft: 15,
-    paddingRight: 15,
-    justifyContent: 'center',
+    flex: 1,
   },
   heading: {
     fontSize: 20,
@@ -20,7 +16,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Intro = () => (
+const AppIntro = () => (
   <View style={styles.container}>
     <Text style={styles.heading}>Strength Exercise Tracking</Text>
     <Text style={styles.paragraph}>
@@ -41,4 +37,4 @@ const Intro = () => (
   </View>
 );
 
-export default Intro;
+export default AppIntro;

@@ -1,21 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
-import TrainingProgramPage from '../../../src/components/training-program-select-page/TrainingProgramPage';
-import GraphQLWrapper from '../../../src/containers/GraphQLWrapper';
-import TrainingProgramList from '../../../src/containers/TrainingProgramList';
-import TrainingProgramListItem from '../../../src/components/training-program-select-page/TrainingProgramListItem';
-
-storiesOf('Training Program Page', module)
-  .add('default', () => (
-    <TrainingProgramPage />
-  ));
+import ProgramListItem from '../../../src/components/ProgramListItem';
 
 storiesOf('Training Program List', module)
-  .add('default', () => (
-    <GraphQLWrapper>
-      <TrainingProgramList />
-    </GraphQLWrapper>
-  ))
   .add('List Item', () => {
     const props = {
       name: 'Training Program name',
@@ -24,6 +11,6 @@ storiesOf('Training Program List', module)
     };
 
     return (
-      <TrainingProgramListItem {...props} />
+      <ProgramListItem {...props} />
     );
   });

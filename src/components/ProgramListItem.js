@@ -23,7 +23,7 @@ const styles = {
   },
 };
 
-class TrainingProgramListItem extends React.Component {
+class ProgramListItem extends React.Component {
   state = {
     showSummary: false,
   };
@@ -58,7 +58,7 @@ class TrainingProgramListItem extends React.Component {
       <View style={styles.container}>
         <Button {...programButtonProps} />
         {this.state.showSummary && (
-          <View>
+          <View style={{ flex: 1 }}>
             <Text style={styles.heading}>Program Summary</Text>
             <Text style={styles.text}>{summary}</Text>
             <Button {...selectButtonProps} />
@@ -68,11 +68,11 @@ class TrainingProgramListItem extends React.Component {
   }
 }
 
-TrainingProgramListItem.propTypes = {
+ProgramListItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
   onSelectProgram: PropTypes.func.isRequired,
 };
 
-export default TrainingProgramListItem;
+export default ProgramListItem;
