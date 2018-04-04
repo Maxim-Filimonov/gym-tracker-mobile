@@ -4,7 +4,7 @@ import Stack from 'react-router-native-stack';
 import { Provider } from 'react-redux';
 import configureStore from '../../configureStore';
 import GraphQLWrapper from '../containers/GraphQLWrapper';
-import ExercisesPage from '../components/exercises-page/ExercisesPage';
+import ProgramExercises from './screens/ProgramExercises';
 import Home from './screens/Home';
 import ProgramSelection from './screens/ProgramSelection';
 
@@ -17,7 +17,7 @@ const Root = () => (
         <Stack>
           <Route exact path="/" component={Home} />
           <Route path="/select-program" component={ProgramSelection} />
-          <Route path="/exercises/:programId" component={ExercisesPage} />
+          <Route path="/exercises/:programId" component={ProgramExercises} />
         </Stack>
       </NativeRouter>
     </Provider>

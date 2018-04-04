@@ -6,6 +6,7 @@ import AppIntro from '../../../src/components/AppIntro';
 import Header from '../../../src/components/Header';
 import Screen from '../../../src/components/Screen';
 import ProgramListItem from '../../../src/components/ProgramListItem';
+import Exercises from '../../../src/components/Exercises';
 
 storiesOf('Screen Template', module)
   .add('default', () =>
@@ -53,4 +54,20 @@ storiesOf('Program List Item', module)
       ),
     };
     return <ProgramListItem {...props} />;
+  });
+
+storiesOf('Exercises', module)
+  .add('Default', () => {
+    const props = {
+      isLoading: false,
+      exercises: [],
+    };
+    return <Exercises {...props} />;
+  })
+  .add('Loading', () => {
+    const props = {
+      isLoading: true,
+      exercises: [],
+    };
+    return <Exercises {...props} />;
   });
