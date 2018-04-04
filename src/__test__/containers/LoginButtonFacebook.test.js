@@ -13,13 +13,10 @@ describe('<LoginButtonFacebook />', () => {
     shallow(<Provider store={store}><LoginButtonFacebook dispatch={jest.fn()} /></Provider>);
   });
 
-  /*
-  it('calls loginWithFacebook when pressed', () => {
+/*   it('calls loginWithFacebook when pressed', () => {
     const dispatch = jest.fn();
-    const wrapper =
-      mount(<Provider store={store}><LoginButtonFacebook dispatch={dispatch} /></Provider>);
+    const wrapper = mount(<LoginButtonFacebook dispatch={dispatch} />);
     wrapper.find('Button').simulate('press');
     expect(loginWithFacebook).toHaveBeenCalledWith(dispatch);
-  });
-  */
+  }); */
 });

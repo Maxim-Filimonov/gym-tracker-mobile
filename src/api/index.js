@@ -6,7 +6,7 @@ export const fetchJWT = (user) => {
   const init = {
     method: 'POST',
     body: JSON.stringify({ email: user.email, password: 'null' }),
-    headers: new Headers({ 'content-type': 'application/json' }),
+    headers: { 'content-type': 'application/json' },
   };
   return fetch(`${API_URL}/login`, init)
     .then(
