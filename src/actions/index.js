@@ -22,3 +22,24 @@ export const fetchJWT = user => (dispatch) => {
       },
     );
 };
+
+export const selectProgram = (user, programId, programName) => (dispatch) => {
+  dispatch({
+    type: types.SELECT_PROGRAM_REQUEST,
+  });
+  return api.selectProgram(user, programId, programName)
+    .then(
+      () => {
+        dispatch({
+          type: types.SELECT_PROGRAM_SUCCESS,
+          strengthProgram: { programId, programName },
+        });
+      },
+      (error) => {
+        dispatch({
+          type: types.SELECT_PROGRAM_FAILURE,
+          message: error.message || 'Something went wrong setting the program.',
+        });
+      },
+    );
+};

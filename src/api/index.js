@@ -1,4 +1,4 @@
-import { API_URL, APP_NAME } from '../config';
+import { LOGIN_API_URL, APP_NAME, STR_TRCKR_API_URL } from '../config';
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -8,12 +8,30 @@ export const fetchJWT = (user) => {
     body: JSON.stringify({ email: user.email, password: 'null' }),
     headers: { 'content-type': 'application/json' },
   };
-  return fetch(`${API_URL}/login`, init)
+  return fetch(`${LOGIN_API_URL}`, init)
     .then(
       response => response.json(),
       error => Promise.reject(new Error(error.message || `Problem connecting to ${APP_NAME}`)),
     )
     .then(({ authToken }) => ({ jwt: authToken }))
+    .catch(() => Promise.reject(new Error(`Problem connecting to ${APP_NAME}.`)));
+};
+
+export const selectProgram = (user, programId, name) => {
+  const init = {
+    method: 'PUT',
+    body: JSON.stringify({ programId, programName: name }),
+    headers: {
+      'content-type': 'application/json',
+      authorization: `Bearer ${user.gymTrackerJWT}`,
+    },
+  };
+  return fetch(`${STR_TRCKR_API_URL}/programs/${programId}`, init)
+    .then(
+      response => response.json(),
+      error => Promise.reject(new Error(error.message || `Problem connecting to ${APP_NAME}`)),
+    )
+    .then(() => Promise.resolve())
     .catch(() => Promise.reject(new Error(`Problem connecting to ${APP_NAME}.`)));
 };
 

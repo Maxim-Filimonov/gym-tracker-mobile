@@ -6,4 +6,5 @@ exports.GRAPHQL_URI = 'http://localhost:3000/graphql';
 exports.APP_NAME = 'GymBuddy';
 exports.APP_SLOGAN = 'strength & exercise tracking';
 exports.APP_AUTHOR = 'Alex Bandisch';
-exports.API_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:8080/gym-tracker' : 'http://myhostgymtracker.com/gym-tracker';
+exports.LOGIN_API_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:8080/gym-tracker/login' : 'http://myhostgymtracker.com/gym-tracker/login';
+exports.STR_TRCKR_API_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:8080/strength-tracker' : 'http://myhostgymtracker.com/strength-tracker';

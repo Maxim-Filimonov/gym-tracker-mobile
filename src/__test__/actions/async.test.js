@@ -1,7 +1,7 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
-import { API_URL } from '../../config';
+import { LOGIN_API_URL } from '../../config';
 import * as actions from '../../actions';
 import * as types from '../../actions/types';
 
@@ -18,7 +18,7 @@ describe('async actions', () => {
     it('creates FETCH_JWT_SUCCESS when fetching JWT is done', () => {
       fetchMock
         .post(
-          `${API_URL}/login`,
+          `${LOGIN_API_URL}`,
           {
             body: { email: 'test@test.com', password: null },
             headers: { 'content-type': 'application/json' },
@@ -49,7 +49,7 @@ describe('async actions', () => {
     it('creates FETCH_JWT_FAILURE if fetching JWT fails', () => {
       fetchMock
         .post(
-          `${API_URL}/login`,
+          `${LOGIN_API_URL}`,
           Promise.reject(new Error('An error')),
         );
 
