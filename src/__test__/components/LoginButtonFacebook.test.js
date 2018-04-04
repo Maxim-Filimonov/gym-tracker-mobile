@@ -3,8 +3,6 @@ import { shallow, mount } from 'enzyme';
 import LoginFacebookButton from '../../components/LoginFacebookButton';
 // import { loginWithFacebook } from '../../actions/login';
 
-global.mount = mount;
-
 describe('<LoginFacebookButton />', () => {
   it('renders without crashing', () => {
     shallow(<LoginFacebookButton onPressButton={jest.fn()} />);
