@@ -1,23 +1,18 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import configureStore from '../../../configureStore';
-import LoginButtonGoogle from '../../containers/LoginButtonGoogle';
+import LoginGoogleButton from '../../components/LoginGoogleButton';
 // import { loginWithGoogle } from '../../actions/login';
 
-const store = configureStore();
-global.mount = mount;
-
-describe('<LoginButtonGoogle />', () => {
+describe('<LoginGoogleButton />', () => {
   it('renders without crashing', () => {
-    shallow(<Provider store={store}><LoginButtonGoogle dispatch={jest.fn()} /></Provider>);
+    shallow(<LoginGoogleButton onPressButton={jest.fn()} />);
   });
 
   /*
   it('calls loginWithGoogle when pressed', () => {
     const dispatch = jest.fn();
     const wrapper =
-      mount(<Provider store={store}><LoginButtonGoogle dispatch={dispatch} /></Provider>);
+      mount(<Provider store={store}><LoginGoogleButton dispatch={dispatch} /></Provider>);
     wrapper.find('Button').simulate('press');
     expect(loginWithGoogle).toHaveBeenCalledWith(dispatch);
   });

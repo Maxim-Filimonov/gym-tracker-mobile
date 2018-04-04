@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { View, Text, StyleSheet } from 'react-native';
-import LoginButtonFacebook from './LoginButtonFacebook';
-import LoginButtonGoogle from './LoginButtonGoogle';
+import LoginWithFacebookButton from './LoginWithFacebook';
+import LoginWithGoogleButton from './LoginWithGoogle';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,8 +27,8 @@ const LoginSection = ({ isLoading }) => (
     {
       !isLoading &&
       <View>
-        <LoginButtonFacebook />
-        <LoginButtonGoogle />
+        <LoginWithFacebookButton />
+        <LoginWithGoogleButton />
       </View>
     }
   </View>
