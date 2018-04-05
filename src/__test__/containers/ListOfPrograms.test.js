@@ -13,7 +13,7 @@ describe('<ListOfPrograms /> mapDispatchToProps', () => {
 
     global.fetch = jest.fn().mockImplementation(() => Promise.resolve());
 
-    mapDispatchToProps(dispatch, ownProps).onSelectProgram(programId, programName)
+    Promise.resolve(mapDispatchToProps(dispatch, ownProps).onSelectProgram(programId, programName))
       .then(() => expect(ownProps.history.push).toHaveBeenCalled());
   });
 });
