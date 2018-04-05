@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import Screen from '../Screen';
-import ProgramList from '../../containers/ProgramList';
+import ProgramListComp from '../../containers/ProgramList';
 
 const ProgramSelection = () => (
   <Screen showFooter={false}>

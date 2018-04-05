@@ -23,11 +23,11 @@ export const fetchJWT = user => (dispatch) => {
     );
 };
 
-export const selectProgram = (user, programId, programName) => (dispatch) => {
+export const selectProgram = (programId, programName) => (dispatch, getState) => {
   dispatch({
     type: types.SELECT_PROGRAM_REQUEST,
   });
-  return api.selectProgram(user, programId, programName)
+  return api.selectProgram(getState().user, programId, programName)
     .then(
       () => {
         dispatch({

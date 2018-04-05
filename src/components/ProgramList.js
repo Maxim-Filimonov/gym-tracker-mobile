@@ -1,18 +1,7 @@
 import React from 'react';
-import { FlatList, Text, StyleSheet } from 'react-native';
-import { withRouter } from 'react-router-native';
 import PropTypes from 'prop-types';
-import gql from 'graphql-tag';
-import { compose } from 'recompose';
-import { graphql, withApollo } from 'react-apollo';
+import { FlatList, Text, StyleSheet } from 'react-native';
 import ProgramListItem from '../components/ProgramListItem';
-
-const ALL_PROGRAMS_QUERY = gql`
-  {allPrograms {
-    id
-    name
-    summary
-  }}`;
 
 const styles = StyleSheet.create({
   loading: {
@@ -30,7 +19,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ProgramList = ({ history, programs }) => {
+const ProgramList = ({ onSelectProgram, programs }) => {
   if (programs.loading) {
     return (
       <Text style={styles.loading}>Getting Training Programs ...</Text>
@@ -44,7 +33,7 @@ const ProgramList = ({ history, programs }) => {
       renderItem={
           ({ item }) =>
             (<ProgramListItem
-              onSelectProgram={() => history.push(`/exercises/${item.id}`)}
+              onSelectProgram={() => onSelectProgram(item.id, item.name)}
               {...item} // Contains id, name, summary
             />)
         }
@@ -55,11 +44,7 @@ const ProgramList = ({ history, programs }) => {
 
 ProgramList.propTypes = {
   programs: PropTypes.PropTypes.shape({}).isRequired,
-  history: PropTypes.shape({}).isRequired,
+  onSelectProgram: PropTypes.func.isRequired,
 };
 
-export default compose(
-  withRouter,
-  graphql(ALL_PROGRAMS_QUERY, { name: 'programs' }),
-  withApollo,
-)(ProgramList);
+export default ProgramList;
