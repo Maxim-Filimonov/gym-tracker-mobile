@@ -15,6 +15,11 @@ const loading = (state = initialState, action) => {
     case types.LOGIN_GOOGLE_FAILURE:
     case types.FETCH_JWT_FAILURE:
       return { ...state, login: false };
+    case types.SELECT_PROGRAM_REQUEST:
+      return { ...state, selectProgram: true };
+    case types.SELECT_PROGRAM_FAILURE:
+    case types.SELECT_PROGRAM_SUCCESS:
+      return { ...state, selectProgram: false };
     default:
       return state;
   }

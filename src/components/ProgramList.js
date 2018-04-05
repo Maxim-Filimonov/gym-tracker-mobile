@@ -19,27 +19,41 @@ const styles = StyleSheet.create({
   },
 });
 
+export const CreateList = ({ onSelectProgram, allPrograms }) => (
+  <FlatList
+    style={styles.list}
+    data={allPrograms}
+    renderItem={
+        ({ item }) =>
+          (<ProgramListItem
+            onSelectProgram={() => onSelectProgram(item.id, item.name)}
+            {...item} // Contains id, name, summary
+          />)
+      }
+    keyExtractor={item => item.id}
+  />
+);
+
+CreateList.propTypes = {
+  onSelectProgram: PropTypes.func.isRequired,
+  allPrograms: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    summary: PropTypes.string.isRequired,
+  })).isRequired,
+};
+
 const ProgramList = ({ onSelectProgram, programs }) => {
   if (programs.loading) {
     return (
       <Text style={styles.loading}>Getting Training Programs ...</Text>
     );
   }
-
-  return (
-    <FlatList
-      style={styles.list}
-      data={programs.allPrograms}
-      renderItem={
-          ({ item }) =>
-            (<ProgramListItem
-              onSelectProgram={() => onSelectProgram(item.id, item.name)}
-              {...item} // Contains id, name, summary
-            />)
-        }
-      keyExtractor={item => item.id}
-    />
-  );
+  const createListProps = {
+    onSelectProgram,
+    allPrograms: programs.allPrograms,
+  };
+  return <CreateList {...createListProps} />;
 };
 
 ProgramList.propTypes = {

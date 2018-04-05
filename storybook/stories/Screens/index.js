@@ -22,9 +22,11 @@ storiesOf('Screens', module)
   .add('Program Selection', () =>
     (
       <GraphQLWrapper>
-        <NativeRouter>
-          <ProgramSelection />
-        </NativeRouter>
+        <Provider store={store}>
+          <NativeRouter>
+            <ProgramSelection />
+          </NativeRouter>
+        </Provider>
       </GraphQLWrapper>
     ))
   .add('Exercises Screen with Router', () => (

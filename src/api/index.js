@@ -28,10 +28,13 @@ export const selectProgram = (user, programId, name) => {
   };
   return fetch(`${STR_TRCKR_API_URL}/programs/${programId}`, init)
     .then(
-      response => response.json(),
-      error => Promise.reject(new Error(error.message || `Problem connecting to ${APP_NAME}`)),
+      response =>
+        (response.ok ?
+          Promise.resolve() :
+          Promise.reject(new Error(new Error(`Problem connecting to ${APP_NAME}..`)))),
+      error =>
+        Promise.reject(new Error(error.message || `Problem connecting to ${APP_NAME}`)),
     )
-    .then(() => Promise.resolve())
     .catch(() => Promise.reject(new Error(`Problem connecting to ${APP_NAME}.`)));
 };
 

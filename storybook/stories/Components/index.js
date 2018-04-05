@@ -5,6 +5,7 @@ import AppFooter from '../../../src/components/AppFooter';
 import AppIntro from '../../../src/components/AppIntro';
 import Header from '../../../src/components/Header';
 import Screen from '../../../src/components/Screen';
+import ProgramList from '../../../src/components/ProgramList';
 import ProgramListItem from '../../../src/components/ProgramListItem';
 // import Exercises from '../../../src/components/Exercises';
 
@@ -42,19 +43,37 @@ storiesOf('App Components', module)
   .add('Footer', () => <AppFooter appName="My cool app" appAuthor="Alex Bandisch" />)
   .add('App Intro', () => <AppIntro />);
 
-storiesOf('Program List Item', module)
+storiesOf('Training Program List', module)
   .add('Default', () => {
+    const props = {
+      onSelectProgram: (id, name) => Alert.alert(
+        'onSelectProgram Callback',
+        `\nClick Callback\n\nProgram id: ${id}\nProgram name: ${name}`,
+      ),
+      programs: {
+        allPrograms: [
+          { id: 'uuid-01', name: 'test1', summary: 'test summary 1' },
+          { id: 'uuid-02', name: 'test2', summary: 'test summary 2' },
+          { id: 'uuid-03', name: 'test3', summary: 'test summary 3' },
+          { id: 'uuid-04', name: 'test4', summary: 'test summary 4' },
+        ],
+      },
+    };
+    return <ProgramList {...props} />;
+  })
+  .add('list item', () => {
     const props = {
       id: '1234567890',
       name: 'Training Program name',
       summary: 'This is the summary of the training program ... lorem ipsum so and so and so forth may the fourth be with you',
       onSelectProgram: () => Alert.alert(
         'onSelectProgram Callback',
-        'Callaback list item id: 1234567890',
+        '\nClick Callback\n\nProgram id: 1234567890\nProgram name: Training Program name',
       ),
     };
     return <ProgramListItem {...props} />;
   });
+
 
 /* storiesOf('Exercises', module)
   .add('Default', () => {

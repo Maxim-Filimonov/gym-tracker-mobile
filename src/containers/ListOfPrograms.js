@@ -16,8 +16,8 @@ const ALL_PROGRAMS_QUERY = gql`
 
 export const mapDispatchToProps = (dispatch, ownProps) => ({
   onSelectProgram: (programId, programName) => {
-    dispatch(selectProgram(programId, programName));
-    ownProps.history.push(`/exercises/${programId}`);
+    Promise.resolve(dispatch(selectProgram(programId, programName)))
+      .then(() => ownProps.history.push(`/exercises/${programId}`));
   },
 });
 
