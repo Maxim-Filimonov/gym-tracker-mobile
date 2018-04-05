@@ -17,10 +17,10 @@ export const fetchJWT = (user) => {
     .catch(() => Promise.reject(new Error(`Problem connecting to ${APP_NAME}.`)));
 };
 
-export const selectProgram = (user, programId, name) => {
+export const selectProgram = (user, programId, name, dateStarted) => {
   const init = {
     method: 'PUT',
-    body: JSON.stringify({ programId, programName: name }),
+    body: JSON.stringify({ programId, programName: name, dateStarted }),
     headers: {
       'content-type': 'application/json',
       authorization: `Bearer ${user.gymTrackerJWT}`,

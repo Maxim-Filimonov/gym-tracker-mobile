@@ -11,12 +11,12 @@ describe('training program async actions', () => {
     it('creates SELECT_PROGRAM_SUCCESS when selecting a program succeeds', () => {
       const programId = '123456';
       const programName = 'test program name';
-
+      const programStartDate = new Date().toISOString().split('T')[0];
       const expectedActions = [
         { type: types.SELECT_PROGRAM_REQUEST },
         {
           type: types.SELECT_PROGRAM_SUCCESS,
-          strengthProgram: { programId, programName },
+          strengthProgram: { id: programId, name: programName, startDate: programStartDate },
         },
       ];
 

@@ -27,12 +27,18 @@ export const selectProgram = (programId, programName) => (dispatch, getState) =>
   dispatch({
     type: types.SELECT_PROGRAM_REQUEST,
   });
-  return api.selectProgram(getState().user, programId, programName)
+  /*
+   * @TODO: For version 2.0
+   *  - popup a calendar when the user selects a program and ask for the programStartDate,
+   *    then send that to the server instead of today's date.
+   * */
+  const programStartDate = new Date().toISOString().split('T')[0];
+  return api.selectProgram(getState().user, programId, programName, programStartDate)
     .then(
       () => {
         dispatch({
           type: types.SELECT_PROGRAM_SUCCESS,
-          strengthProgram: { programId, programName },
+          strengthProgram: { id: programId, name: programName, startDate: programStartDate },
         });
       },
       (error) => {

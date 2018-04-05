@@ -7,7 +7,7 @@ import Header from '../../../src/components/Header';
 import Screen from '../../../src/components/Screen';
 import ProgramList from '../../../src/components/ProgramList';
 import ProgramListItem from '../../../src/components/ProgramListItem';
-// import Exercises from '../../../src/components/Exercises';
+import ExercisesHeading from '../../../src/components/ExercisesHeading';
 
 storiesOf('Screen Template', module)
   .add('default', () =>
@@ -74,19 +74,12 @@ storiesOf('Training Program List', module)
     return <ProgramListItem {...props} />;
   });
 
-
-/* storiesOf('Exercises', module)
-  .add('Default', () => {
+storiesOf('Exercises', module)
+  .add('heading', () => {
     const props = {
-      isLoading: false,
-      exercises: [],
+      programName: 'Test Training Program',
+      weekNumber: 1,
+      dayNumber: 1,
     };
-    return <Exercises {...props} />;
-  })
-  .add('Loading', () => {
-    const props = {
-      isLoading: true,
-      exercises: [],
-    };
-    return <Exercises {...props} />;
-  }); */
+    return <ExercisesHeading {...props} />;
+  });

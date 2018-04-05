@@ -17,7 +17,7 @@ const Root = () => (
         <Stack>
           <Route exact path="/" component={Home} />
           <Route path="/select-program" component={ProgramSelection} />
-          <Route path="/exercises/:programId" component={ProgramExercises} />
+          <Route path="/exercises" component={ProgramExercises} />
         </Stack>
       </NativeRouter>
     </Provider>

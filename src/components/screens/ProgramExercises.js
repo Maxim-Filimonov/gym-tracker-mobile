@@ -1,23 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
-import ProgramNameSummary from '../../containers/ProgramNameSummary';
+import Screen from '../Screen';
+import ExercisesHeading from '../../containers/ExercisesHeadingDetails';
 
-const ProgramExercises = ({ match: { params } }) => {
-  console.log('ProgramExercises params: ', params);
-  const { programId } = params;
-  return (
+export const ProgramExercises = () => (
+  <Screen showFooter={false}>
     <View>
-      <ProgramNameSummary programId={programId} misc="from me!!" />
+      <ExercisesHeading />
+      <Text>List of exercises here (ListOfExercises)</Text>
     </View>
-  );
-};
-
-ProgramExercises.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.object.isRequired,
-  }).isRequired,
-};
+  </Screen>
+);
 
 export default ProgramExercises;
 

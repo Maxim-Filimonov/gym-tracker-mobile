@@ -1,6 +1,6 @@
 import * as types from '../actions/types';
 
-const user = (state = {}, action) => {
+const program = (state = {}, action) => {
   switch (action.type) {
     case types.SELECT_PROGRAM_SUCCESS:
       return { ...state, ...action.strengthProgram };
@@ -11,4 +11,4 @@ const user = (state = {}, action) => {
   }
 };
 
-export default user;
+export default program;
