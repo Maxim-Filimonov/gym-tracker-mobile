@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, Text, StyleSheet } from 'react-native';
+import { FlatList, Text, StyleSheet, View } from 'react-native';
 import ProgramListItem from '../components/ProgramListItem';
 
 const styles = StyleSheet.create({
@@ -24,12 +24,12 @@ export const CreateList = ({ onSelectProgram, allPrograms }) => (
     style={styles.list}
     data={allPrograms}
     renderItem={
-        ({ item }) =>
-          (<ProgramListItem
-            onSelectProgram={() => onSelectProgram(item.id, item.name)}
-            {...item} // Contains id, name, summary
-          />)
-      }
+          ({ item }) =>
+            (<ProgramListItem
+              onSelectProgram={() => onSelectProgram(item.id, item.name)}
+              {...item} // Contains id, name, summary
+            />)
+        }
     keyExtractor={item => item.id}
   />
 );
@@ -43,7 +43,10 @@ CreateList.propTypes = {
   })).isRequired,
 };
 
-const ProgramList = ({ onSelectProgram, programs }) => {
+const ProgramList = ({ onSelectProgram, programs, isLoadingSelectedProgram }) => {
+  if (isLoadingSelectedProgram) {
+    return <View><Text>Loading selected Training Program...</Text></View>;
+  }
   if (programs.loading) {
     return (
       <Text style={styles.loading}>Getting Training Programs ...</Text>
@@ -57,6 +60,7 @@ const ProgramList = ({ onSelectProgram, programs }) => {
 };
 
 ProgramList.propTypes = {
+  isLoadingSelectedProgram: PropTypes.bool.isRequired,
   programs: PropTypes.PropTypes.shape({}).isRequired,
   onSelectProgram: PropTypes.func.isRequired,
 };

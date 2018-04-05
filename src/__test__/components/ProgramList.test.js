@@ -12,13 +12,32 @@ describe('<ProgramList />', () => {
         { id: '4', name: 'test4', summary: 'test summary 4' },
       ],
     };
-    shallow(<ProgramList onSelectProgram={jest.fn()} programs={programs} />);
+    shallow(<ProgramList
+      isLoadingSelectedProgram={false}
+      onSelectProgram={jest.fn()}
+      programs={programs}
+    />);
   });
 
   it('renders the loading page without crashing', () => {
     const programs = {
       loading: true,
     };
-    shallow(<ProgramList onSelectProgram={jest.fn()} programs={programs} />);
+    shallow(<ProgramList
+      onSelectProgram={jest.fn()}
+      programs={programs}
+      isLoadingSelectedProgram={false}
+    />);
+  });
+
+  it('renders loading when a program is selected without crashing', () => {
+    const programs = {
+      allPrograms: [],
+    };
+    shallow(<ProgramList
+      onSelectProgram={jest.fn()}
+      isLoadingSelectedProgram
+      programs={programs}
+    />);
   });
 });

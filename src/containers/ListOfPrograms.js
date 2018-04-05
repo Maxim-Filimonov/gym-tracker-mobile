@@ -14,6 +14,10 @@ const ALL_PROGRAMS_QUERY = gql`
     summary
   }}`;
 
+export const mapStateToProps = state => ({
+  isLoadingSelectedProgram: !!state.loading.selectProgram,
+});
+
 export const mapDispatchToProps = (dispatch, ownProps) => ({
   onSelectProgram: (programId, programName) => {
     Promise.resolve(dispatch(selectProgram(programId, programName)))
@@ -23,7 +27,7 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
 
 export default compose(
   withRouter,
-  connect(null, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   graphql(ALL_PROGRAMS_QUERY, { name: 'programs' }),
   withApollo,
 )(ProgramList);
