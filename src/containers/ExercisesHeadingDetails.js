@@ -4,8 +4,8 @@ import * as utils from '../utils';
 
 export const mapStateToProps = state => ({
   programName: state.program.name,
-  weekNumber: utils.calculateWeekNumber(state.program.startDate),
-  dayNumber: utils.calculateDayNumber(state.program.startDate),
+  weekNumber: utils.currentWeekNumber(state.program.startDate),
+  dayNumber: utils.currentDayNumber(state.program.startDate),
 });
 
 export default connect(mapStateToProps)(ExercisesHeading);
