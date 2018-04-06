@@ -1,12 +1,7 @@
-import Expo from 'expo';
-import { FACEBOOK_APP_ID, GOOGLE_ANDROID_CLIENT_ID, GOOGLE_IOS_CLIENT_ID } from '../config';
+import * as ExpoLogin from './expoLogin';
 
 export async function processFacebookLogin() {
-  const {
-    type, token, expires,
-  } = await Expo.Facebook.logInWithReadPermissionsAsync(FACEBOOK_APP_ID, {
-    permissions: ['public_profile', 'email'],
-  });
+  const { type, token, expires } = await ExpoLogin.ExpoFacebookLogin();
   if (type === 'success') {
     const response = await fetch(`https://graph.facebook.com/me?access_token=${token}&fields=id,name,email,picture`);
     // response.json() = {
@@ -28,11 +23,7 @@ export async function processFacebookLogin() {
 
 export async function processGoogleLogin() {
   try {
-    const result = await Expo.Google.logInAsync({
-      androidClientId: GOOGLE_ANDROID_CLIENT_ID,
-      iosClientId: GOOGLE_IOS_CLIENT_ID,
-      scopes: ['profile', 'email'],
-    });
+    const result = await ExpoLogin.ExpoGoogleLogin();
 
     if (result.type === 'success') {
       // result = { user: { email, name, photoUrl, id }

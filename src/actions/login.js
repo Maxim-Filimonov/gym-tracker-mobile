@@ -1,4 +1,4 @@
-import * as expoLogin from './expoLogin';
+import * as apiLogin from '../api/logins';
 import * as types from './types';
 import { fetchJWT } from './index';
 
@@ -6,7 +6,7 @@ export const loginWithFacebook = () => (dispatch) => {
   dispatch({
     type: types.LOGIN_FACEBOOK_REQUEST,
   });
-  return expoLogin.processFacebookLogin()
+  return apiLogin.processFacebookLogin()
     .then(
       (user) => {
         dispatch({
@@ -28,7 +28,7 @@ export const loginWithGoogle = () => (dispatch) => {
   dispatch({
     type: types.LOGIN_GOOGLE_REQUEST,
   });
-  return expoLogin.processGoogleLogin()
+  return apiLogin.processGoogleLogin()
     .then(
       (user) => {
         dispatch({

@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as login from '../../actions/login';
 import * as types from '../../actions/types';
-import * as expoLogin from '../../actions/expoLogin';
+import * as expoLogin from '../../api/logins';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
