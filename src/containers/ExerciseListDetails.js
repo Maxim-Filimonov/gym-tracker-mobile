@@ -22,7 +22,6 @@ const GET_EXERCISES =
     }
   }`;
 
-// @TODO: Remove the || '1742e8f9-2fb7-4dba-9787-4b84dc680d84'
 export const mapStateToProps = state => ({
   dayNumber: utils.currentDayNumber(state.program.startDate),
   programId: state.program.id,

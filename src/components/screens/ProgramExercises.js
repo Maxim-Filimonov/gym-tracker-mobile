@@ -13,5 +13,9 @@ const ProgramExercises = () => (
   </Screen>
 );
 
+// Menu
+// -> change program
+// -> logout
+
 export default ProgramExercises;
 
