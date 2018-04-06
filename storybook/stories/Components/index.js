@@ -8,6 +8,7 @@ import Screen from '../../../src/components/Screen';
 import ProgramList from '../../../src/components/ProgramList';
 import ProgramListItem from '../../../src/components/ProgramListItem';
 import ExercisesHeading from '../../../src/components/ExercisesHeading';
+import ExerciseList from '../../../src/components/ExerciseList';
 
 storiesOf('Screen Template', module)
   .add('default', () =>
@@ -82,4 +83,50 @@ storiesOf('Exercises', module)
       dayNumber: 1,
     };
     return <ExercisesHeading {...props} />;
+  })
+  .add('Loading List', () => {
+    const props = {
+      data: {
+        loading: true,
+      },
+    };
+    return <ExerciseList {...props} />;
+  })
+  .add('List', () => {
+    const exercises = [{
+      id: 'fd861db4-afd0-4a6f-8bd0-0a4333d21ea2',
+      reps: 74,
+      sets: 1,
+      type: 'bench press',
+      comments: 'qui atque corporis at placeat et ducimus consequatur magnam ut veritatis',
+    },
+    {
+      id: 'b5bc2ca9-6127-4718-ad2e-9c887aa502cc',
+      reps: 38,
+      sets: 5,
+      type: 'deadlift',
+      comments: 'earum enim maxime et quidem deserunt dolores soluta autem inventore est qui quia assumenda nam est qui labore cupiditate eveniet voluptate itaque non',
+    },
+    {
+      id: 'b3b7c4ab-6d92-4e17-a683-d82d956b8546',
+      reps: 35,
+      sets: 3,
+      type: 'squal',
+      comments: 'quaerat occaecati iure fugit quos debitis et temporibus velit rerum modi quia ut impedit quasi voluptatum',
+    },
+    {
+      id: '58fc97bb-7c34-4add-b691-6aec1beab142',
+      reps: 45,
+      sets: 2,
+      type: 'deadlift',
+      comments: 'reprehenderit hic a qui maiores ut aperiam dignissimos molestiae voluptatum est est nisi enim mollitia necessitatibus nesciunt veniam ab deserunt qui magnam debitis dicta aperiam necessitatibus nihil voluptatem cum at',
+    }];
+    const props = {
+      data: {
+        findByDay: {
+          exercises,
+        },
+      },
+    };
+    return <ExerciseList {...props} />;
   });

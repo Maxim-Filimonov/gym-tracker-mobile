@@ -2,12 +2,13 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import Screen from '../Screen';
 import ExercisesHeading from '../../containers/ExercisesHeadingDetails';
+import ExerciseList from '../../containers/ExerciseListDetails';
 
-export const ProgramExercises = () => (
+const ProgramExercises = () => (
   <Screen showFooter={false}>
     <View>
       <ExercisesHeading />
-      <Text>List of exercises here (ListOfExercises)</Text>
+      <ExerciseList />
     </View>
   </Screen>
 );

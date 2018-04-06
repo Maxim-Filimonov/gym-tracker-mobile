@@ -20,7 +20,7 @@ export const mapStateToProps = state => ({
 export const mapDispatchToProps = (dispatch, ownProps) => ({
   onSelectProgram: (programId, programName) => {
     Promise.resolve(dispatch(selectProgram(programId, programName)))
-      .then(() => ownProps.history.push('/exercises'));
+      .then(() => ownProps.history.push(`/exercises/${programId}`));
   },
 });
 

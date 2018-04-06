@@ -1,15 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { Provider } from 'react-redux';
-import { NativeRouter, Redirect, Route } from 'react-router-native';
-import { View, Text } from 'react-native';
+import { NativeRouter } from 'react-router-native';
 import GraphQLWrapper from '../../../src/containers/GraphQLWrapper';
-import { ProgramExercises } from '../../../src/components/screens/ProgramExercises';
+import ProgramExercises from '../../../src/components/screens/ProgramExercises';
 import configureStore from '../../../configureStore';
 import Landing from '../../../src/components/screens/Landing';
 import ProgramSelection from '../../../src/components/screens/ProgramSelection';
-
-// import { Exercises, ExercisesView } from '../../../src/components/screens/Exercises';
 
 const store = configureStore();
 
@@ -31,9 +28,13 @@ storiesOf('Screens', module)
       </GraphQLWrapper>
     ))
   .add('ProgramExercises Screen', () => (
-    <Provider store={store}>
-      <ProgramExercises />
-    </Provider>));
+    <GraphQLWrapper>
+      <Provider store={store}>
+        <NativeRouter>
+          <ProgramExercises />
+        </NativeRouter>
+      </Provider>
+    </GraphQLWrapper>));
 
 
 /*   .add('ProgramExercises Screen with Router', () => (
