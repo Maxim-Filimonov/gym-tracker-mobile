@@ -19,7 +19,7 @@ jest.mock('../../api/expoLogin', () => ({
   }),
 }));
 
-describe('# processFacebookLogin', () => {
+describe('# processFacebookLogin - success', () => {
   it('should successfully login with Facebook', async () => {
     global.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve({
@@ -57,7 +57,7 @@ describe('# processFacebookLogin', () => {
   });
 });
 
-describe('# processGoogleLogin', () => {
+describe('# processGoogleLogin - success', () => {
   it('should successfully login with Google', async () => {
     const expectedResult = {
       socialUserId: 'userid-1234567890',
