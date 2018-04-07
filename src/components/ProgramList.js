@@ -24,12 +24,12 @@ export const CreateList = ({ onSelectProgram, allPrograms }) => (
     style={styles.list}
     data={allPrograms}
     renderItem={
-          ({ item }) =>
-            (<ProgramListItem
-              onSelectProgram={() => onSelectProgram(item.id, item.name)}
-              {...item} // Contains id, name, summary
-            />)
-        }
+      ({ item }) =>
+        (<ProgramListItem
+          onSelectProgram={() => onSelectProgram(item.id, item.name)}
+          {...item} // Contains id, name, summary
+        />)
+    }
     keyExtractor={item => item.id}
   />
 );

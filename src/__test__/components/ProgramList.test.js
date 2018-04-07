@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import ProgramList from '../../components/ProgramList';
+import ProgramList, { CreateList } from '../../components/ProgramList';
 
 describe('<ProgramList />', () => {
   it('renders the page without crashing', () => {
@@ -39,5 +39,20 @@ describe('<ProgramList />', () => {
       isLoadingSelectedProgram
       programs={programs}
     />);
+  });
+});
+
+describe('<CreateList />', () => {
+  it('should render the4 FlatList of training programs', () => {
+    const props = {
+      onSelectProgram: jest.fn(),
+      allPrograms: [
+        { id: '1', name: 'test1', summary: 'test summary 1' },
+        { id: '2', name: 'test2', summary: 'test summary 2' },
+        { id: '3', name: 'test3', summary: 'test summary 3' },
+        { id: '4', name: 'test4', summary: 'test summary 4' },
+      ],
+    };
+    shallow(<CreateList {...props} />);
   });
 });
