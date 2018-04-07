@@ -17,13 +17,7 @@ const exercises = [{
   comments: 'earum enim maxime et quidem deserunt dolores soluta autem inventore est qui quia assumenda nam est qui labore cupiditate eveniet voluptate itaque non',
 }];
 
-/* describe('<ExerciseList />>', () => {
-  it('renders without crashing', () => {
-    shallow(<ExerciseList exercises={exercises} />);
-  });
-}); */
-
-describe('<SingleExerciseView />>', () => {
+describe('<SingleExerciseView />', () => {
   it('renders without crashing', () => {
     const exercise = {
       id: 'fd861db4-afd0-4a6f-8bd0-0a4333d21ea2',
@@ -36,9 +30,29 @@ describe('<SingleExerciseView />>', () => {
   });
 });
 
-
-/* describe('<ExercisesListView />>', () => {
+describe('<ExercisesListView />>', () => {
   it('renders without crashing', () => {
     shallow(<ExercisesListView exercises={exercises} />);
   });
-}); */
+});
+
+describe('<ExercisesList />>', () => {
+  it('renders the loading text without crashing', () => {
+    const props = {
+      data: {
+        loading: true,
+      },
+    };
+    shallow(<ExerciseList {...props} />);
+  });
+  it('renders the exercises text without crashing', () => {
+    const props = {
+      data: {
+        findByDay: {
+          exercises,
+        },
+      },
+    };
+    shallow(<ExerciseList {...props} />);
+  });
+});
