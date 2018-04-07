@@ -1,7 +1,7 @@
-import * as ExpoLogin from './expoLogin';
+import { ExpoFacebookLogin, ExpoGoogleLogin } from './expoLogin';
 
 export async function processFacebookLogin() {
-  const { type, token, expires } = await ExpoLogin.ExpoFacebookLogin();
+  const { type, token, expires } = await ExpoFacebookLogin();
   if (type === 'success') {
     const response = await fetch(`https://graph.facebook.com/me?access_token=${token}&fields=id,name,email,picture`);
     // response.json() = {
@@ -23,8 +23,7 @@ export async function processFacebookLogin() {
 
 export async function processGoogleLogin() {
   try {
-    const result = await ExpoLogin.ExpoGoogleLogin();
-
+    const result = await ExpoGoogleLogin();
     if (result.type === 'success') {
       // result = { user: { email, name, photoUrl, id }
       //            accessToken, idToken, refreshToken, serverAuthCode }
