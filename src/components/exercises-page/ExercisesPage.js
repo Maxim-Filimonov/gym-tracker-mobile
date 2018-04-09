@@ -21,9 +21,9 @@ export const GET_PROGRAM_EXERCISES = gql`
   }
 `;
 
-const ExercisesPage = ({ match, data }) => {
+const ExercisesPage = ({ data }) =>
   // console.log('history:', history);
-  return (
+  (
     <ScrollView>
       <Text>
         This is the exercises page.
@@ -42,10 +42,7 @@ const ExercisesPage = ({ match, data }) => {
       }
     </ScrollView>
   );
-};
-
 ExercisesPage.propTypes = {
-  match: PropTypes.shape({}).isRequired,
   data: PropTypes.shape({}).isRequired,
 };
 

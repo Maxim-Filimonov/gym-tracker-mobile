@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import Screen from '../Screen';
 import ExercisesHeading from '../../containers/ExercisesHeadingDetails';
 import ExerciseList from '../../containers/ExerciseListDetails';

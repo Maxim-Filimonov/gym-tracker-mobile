@@ -27,13 +27,13 @@ export const mapStateToProps = state => ({
   programId: state.program.id,
 });
 
-export const mapDispatchToProps = (dispatch, ownProps) => ({
+// export const mapDispatchToProps = (dispatch, ownProps) => ({
   // leaving this here as palceholder for later
-});
+// });
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
   graphql(
     GET_EXERCISES,
     {

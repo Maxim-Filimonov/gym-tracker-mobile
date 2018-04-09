@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import LoginGoogleButton from '../../components/LoginGoogleButton';
 // import { loginWithGoogle } from '../../actions/login';
 
