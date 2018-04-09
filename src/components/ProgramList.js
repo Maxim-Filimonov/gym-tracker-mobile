@@ -26,7 +26,7 @@ export const CreateList = ({ onSelectProgram, allPrograms }) => (
     renderItem={
       ({ item }) =>
         (<ProgramListItem
-          onSelectProgram={() => onSelectProgram(item.id, item.name)}
+          onPressSelectProgram={() => onSelectProgram(item.id, item.name)}
           {...item} // Contains id, name, summary
         />)
     }

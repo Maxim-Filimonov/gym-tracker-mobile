@@ -6,7 +6,7 @@ import AppIntro from '../../../src/components/AppIntro';
 import Header from '../../../src/components/Header';
 import Screen from '../../../src/components/Screen';
 import ProgramList from '../../../src/components/ProgramList';
-import ProgramListItem from '../../../src/components/ProgramListItem';
+import ProgramListItem, { ListItem } from '../../../src/components/ProgramListItem';
 import ExercisesHeading from '../../../src/components/ExercisesHeading';
 import ExerciseList from '../../../src/components/ExerciseList';
 
@@ -47,6 +47,7 @@ storiesOf('App Components', module)
 storiesOf('Training Program List', module)
   .add('Default', () => {
     const props = {
+      isLoadingSelectedProgram: false,
       onSelectProgram: (id, name) => Alert.alert(
         'onSelectProgram Callback',
         `\nClick Callback\n\nProgram id: ${id}\nProgram name: ${name}`,
@@ -62,17 +63,43 @@ storiesOf('Training Program List', module)
     };
     return <ProgramList {...props} />;
   })
-  .add('list item', () => {
+  .add('List item (container)', () => {
     const props = {
       id: '1234567890',
       name: 'Training Program name',
       summary: 'This is the summary of the training program ... lorem ipsum so and so and so forth may the fourth be with you',
-      onSelectProgram: () => Alert.alert(
+      onPressSelectProgram: () => Alert.alert(
         'onSelectProgram Callback',
         '\nClick Callback\n\nProgram id: 1234567890\nProgram name: Training Program name',
       ),
     };
     return <ProgramListItem {...props} />;
+  })
+  .add('List item (component) - default', () => {
+    const props = {
+      id: '1234567890',
+      name: 'Training Program name',
+      summary: 'This is the summary of the training program ... lorem ipsum so and so and so forth may the fourth be with you',
+      onPressSelectProgram: () => Alert.alert(
+        'onSelectProgram Callback',
+        '\nClick Callback\n\nProgram id: 1234567890\nProgram name: Training Program name',
+      ),
+      showSummary: false,
+    };
+    return <ListItem {...props} />;
+  })
+  .add('List item (component) - show summary', () => {
+    const props = {
+      id: '1234567890',
+      name: 'Training Program name',
+      summary: 'This is the summary of the training program ... lorem ipsum so and so and so forth may the fourth be with you',
+      onPressSelectProgram: () => Alert.alert(
+        'onSelectProgram Callback',
+        '\nClick Callback\n\nProgram id: 1234567890\nProgram name: Training Program name',
+      ),
+      showSummary: true,
+    };
+    return <ListItem {...props} />;
   });
 
 storiesOf('Exercises', module)

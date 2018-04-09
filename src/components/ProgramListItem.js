@@ -23,48 +23,63 @@ const styles = {
   },
 };
 
+export const ListItem = ({
+  name, summary, onPressShowSummary, onPressSelectProgram, showSummary,
+}) => {
+  const selectButtonProps = {
+    rightIcon: { name: 'check-circle' },
+    title: 'Select Training Program',
+    onPress: onPressSelectProgram,
+    buttonStyle: {
+      backgroundColor: '#31bb5a',
+    },
+  };
+  const programButtonProps = {
+    rightIcon: { name: 'info-outline' },
+    title: name,
+    onPress: onPressShowSummary,
+    buttonStyle: {
+      backgroundColor: '#003366',
+    },
+  };
+  return (
+    <View style={styles.container}>
+      <Button {...programButtonProps} />
+      {showSummary && (
+        <View style={{ flex: 1 }}>
+          <Text style={styles.heading}>Program Summary</Text>
+          <Text style={styles.text}>{summary}</Text>
+          <Button {...selectButtonProps} />
+        </View>)}
+    </View>
+  );
+};
+
+ListItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  summary: PropTypes.string.isRequired,
+  showSummary: PropTypes.bool.isRequired,
+  onPressShowSummary: PropTypes.func.isRequired,
+  onPressSelectProgram: PropTypes.func.isRequired,
+};
+
 class ProgramListItem extends React.Component {
   state = {
     showSummary: false,
   };
 
-  handlePressProgram = () => {
+  onPressShowSummary = () => {
     this.setState({
       showSummary: !this.state.showSummary,
     });
   };
 
   render() {
-    const {
-      name, summary, onSelectProgram,
-    } = this.props;
-    const selectButtonProps = {
-      rightIcon: { name: 'check-circle' },
-      title: 'Select Training Program',
-      onPress: onSelectProgram,
-      buttonStyle: {
-        backgroundColor: '#31bb5a',
-      },
-    };
-    const programButtonProps = {
-      rightIcon: { name: 'info-outline' },
-      title: name,
-      onPress: this.handlePressProgram,
-      buttonStyle: {
-        backgroundColor: '#003366',
-      },
-    };
-    return (
-      <View style={styles.container}>
-        <Button {...programButtonProps} />
-        {this.state.showSummary && (
-          <View style={{ flex: 1 }}>
-            <Text style={styles.heading}>Program Summary</Text>
-            <Text style={styles.text}>{summary}</Text>
-            <Button {...selectButtonProps} />
-          </View>)}
-      </View>
-    );
+    return (<ListItem
+      onPressShowSummary={this.onPressShowSummary}
+      showSummary={this.state.showSummary}
+      {...this.props}
+    />);
   }
 }
 
@@ -72,7 +87,7 @@ ProgramListItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
-  onSelectProgram: PropTypes.func.isRequired,
+  onPressSelectProgram: PropTypes.func.isRequired,
 };
 
 export default ProgramListItem;
