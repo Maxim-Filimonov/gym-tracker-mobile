@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { View, Text, StyleSheet } from 'react-native';
-import FacebookLoginButton from './LoginButton/FacebookLogin';
-import GoogleLoginButton from './LoginButton/GoogleLogin';
+import FacebookLoginButton from '../LoginButton/FacebookLogin';
+import GoogleLoginButton from '../LoginButton/GoogleLogin';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginSection = ({ isLoading }) => (
+export const LoginSection = ({ isLoading }) => (
   <View style={styles.container}>
     <Text style={styles.text}>Login with your social media account to start</Text>
     {isLoading && <Text>Loading please wait...</Text>}
@@ -37,4 +38,8 @@ LoginSection.propTypes = {
   isLoading: PropTypes.bool.isRequired,
 };
 
-export default LoginSection;
+export const mapStateToProps = state => ({
+  isLoading: !!state.loading.login,
+});
+
+export default connect(mapStateToProps)(LoginSection);

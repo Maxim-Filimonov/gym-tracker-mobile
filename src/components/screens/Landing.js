@@ -2,9 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 import Screen from '../Screen';
 import AppIntro from '../AppIntro';
-import LoginSection from '../../containers/LoginSection';
+import LoginButtonsSection from '../LoginButtonsSection';
 
 const Landing = () =>
-  <Screen><View style={{ flex: 1 }}><AppIntro /><LoginSection /></View></Screen>;
+  <Screen><View style={{ flex: 1 }}><AppIntro /><LoginButtonsSection /></View></Screen>;
 
 export default Landing;

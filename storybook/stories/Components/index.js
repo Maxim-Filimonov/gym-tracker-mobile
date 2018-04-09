@@ -13,6 +13,9 @@ import { List } from '../../../src/components/ProgramList';
 import ProgramListItem, { ProgramItem } from '../../../src/components/ProgramListItem';
 import { Heading } from '../../../src/components/ExercisesHeading';
 import { ListOfExercises } from '../../../src/components/ExerciseList';
+import { LoginSection } from '../../../src/components/LoginButtonsSection';
+import FacebookLoginButton from '../../../src/components/LoginButton/FacebookLogin';
+import GoogleLoginButton from '../../../src/components/LoginButton/GoogleLogin';
 
 const store = configureStore();
 
@@ -157,3 +160,11 @@ storiesOf('Exercises', module)
     };
     return <ListOfExercises {...props} />;
   });
+
+storiesOf('Login Section', module)
+  .add('Default', () => <Provider store={store}><LoginSection isLoading={false} /></Provider>)
+  .add('Loading', () => <Provider store={store}><LoginSection isLoading /></Provider>);
+
+storiesOf('Social Login Buttons', module)
+  .add('Facebook', () => <Provider store={store}><FacebookLoginButton /></Provider>)
+  .add('Google', () => <Provider store={store}><GoogleLoginButton /></Provider>);
