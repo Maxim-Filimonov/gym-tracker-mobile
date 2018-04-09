@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { shallow } from 'enzyme';
-import Screen from '../../components/Screen';
+import Screen from './Screen';
 
 describe('<Screen />', () => {
   it('renders without crashing', () => {

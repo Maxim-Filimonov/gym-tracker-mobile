@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import AppFooter from '../../components/AppFooter';
+import AppFooter from './AppFooter';
 
 describe('<AppFooter />', () => {
   it('renders without crashing', () => {

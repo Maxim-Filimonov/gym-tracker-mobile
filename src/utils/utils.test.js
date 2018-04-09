@@ -1,6 +1,6 @@
 import each from 'jest-each';
 import moment from 'moment';
-import { currentWeekNumber, currentDayNumber } from '../../utils';
+import { currentWeekNumber, currentDayNumber } from './index';
 
 const TODAY = moment('2018-04-06');
 

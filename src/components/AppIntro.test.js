@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import AppIntro from '../../components/AppIntro';
+import AppIntro from './AppIntro';
 
 describe('<AppIntro />', () => {
   it('renders without crashing', () => {
