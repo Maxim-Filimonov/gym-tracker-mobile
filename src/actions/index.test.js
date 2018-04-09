@@ -1,10 +1,9 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
-import { LOGIN_API_URL, STR_TRCKR_API_URL } from '../config';
+import { LOGIN_API_URL } from '../config';
 import * as actions from './index';
 import * as types from './types';
-import { SSL_OP_CIPHER_SERVER_PREFERENCE } from 'constants';
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);

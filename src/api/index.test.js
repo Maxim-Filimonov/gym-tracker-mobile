@@ -48,11 +48,11 @@ describe('# selectProgram ', () => {
     global.fetch = jest.fn().mockImplementationOnce(() => Promise.resolve());
 
     try {
-      selectProgram(user, programId, programName, dateStarted)
-        .then(res => console.log('res:', res));
+      selectProgram(user, programId, programName, dateStarted);
+      // .then(res => console.log('res:', res));
       // console.log('result:', result);
     } catch (e) {
-      console.log('error:', e);
+      // console.log('error:', e);
     }
   });
 

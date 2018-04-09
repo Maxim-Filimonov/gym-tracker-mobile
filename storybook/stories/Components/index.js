@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, Alert } from 'react-native';
 import { Provider } from 'react-redux';
 import { NativeRouter } from 'react-router-native';
 import { storiesOf } from '@storybook/react-native';
@@ -10,7 +10,7 @@ import AppIntro from '../../../src/components/AppIntro';
 import Header from '../../../src/components/Header';
 import Screen from '../../../src/components/Screen';
 import { List } from '../../../src/components/ProgramList';
-import ProgramListItem, { ProgramItem } from '../../../src/components/ProgramListItem';
+import { ProgramItem } from '../../../src/components/ProgramListItem';
 import { Heading } from '../../../src/components/ExercisesHeading';
 import { ListOfExercises } from '../../../src/components/ExerciseList';
 import { LoginSection } from '../../../src/components/LoginButtonsSection';
@@ -81,12 +81,12 @@ storiesOf('Training Program List', module)
       id: '1234567890',
       name: 'Training Program name',
       summary: 'This is the summary of the training program ... lorem ipsum so and so and so forth may the fourth be with you',
-      onPressSelectProgram: () => console.log(
+      onPressSelectProgram: () => Alert.alert(
         'onSelectProgram Callback:',
         '\nClick Callback\n\nProgram id: 1234567890\nProgram name: Training Program name',
       ),
       showSummary: false,
-      onPressShowSummary: () => console.log('onPressShowSummary event'),
+      onPressShowSummary: () => Alert.alert('onPressShowSummary event'),
     };
     return <ProgramItem {...props} />;
   })
@@ -95,12 +95,12 @@ storiesOf('Training Program List', module)
       id: '1234567890',
       name: 'Training Program name',
       summary: 'This is the summary of the training program ... lorem ipsum so and so and so forth may the fourth be with you',
-      onPressSelectProgram: () => console.log(
+      onPressSelectProgram: () => Alert.alert(
         'onSelectProgram Callback:',
         '\nClick Callback\n\nProgram id: 1234567890\nProgram name: Training Program name',
       ),
       showSummary: true,
-      onPressShowSummary: () => console.log('onPressShowSummary event'),
+      onPressShowSummary: () => Alert.alert('onPressShowSummary event'),
     };
     return <ProgramItem {...props} />;
   });
