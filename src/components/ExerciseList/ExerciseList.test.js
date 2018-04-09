@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ExerciseList, { SingleExerciseView, ExercisesListView } from '../../components/ExerciseList';
+import * as utils from '../../utils';
+import { ListOfExercises, SingleExerciseView, ExercisesListView, mapStateToProps } from './index';
 
 const exercises = [{
   id: 'fd861db4-afd0-4a6f-8bd0-0a4333d21ea2',
@@ -30,22 +31,22 @@ describe('<SingleExerciseView />', () => {
   });
 });
 
-describe('<ExercisesListView />>', () => {
+describe('<ExercisesListView />', () => {
   it('renders without crashing', () => {
     shallow(<ExercisesListView exercises={exercises} />);
   });
 });
 
-describe('<ExercisesList />>', () => {
+describe('<ListOfExercises />', () => {
   it('renders the loading text without crashing', () => {
     const props = {
       data: {
         loading: true,
       },
     };
-    shallow(<ExerciseList {...props} />);
+    shallow(<ListOfExercises {...props} />);
   });
-  it('renders the exercises text without crashing', () => {
+  it('renders the exercises list without crashing', () => {
     const props = {
       data: {
         findByDay: {
@@ -53,6 +54,25 @@ describe('<ExercisesList />>', () => {
         },
       },
     };
-    shallow(<ExerciseList {...props} />);
+    shallow(<ListOfExercises {...props} />);
+  });
+});
+
+describe('# mapStateToProps', () => {
+  it('should return the correct state', () => {
+    const startDate = '2018-04-05';
+    const expectedDayNumber = utils.currentDayNumber(startDate);
+    const initialState = {
+      program: {
+        id: 'test-id-1234567890',
+        startDate,
+      },
+    };
+    const expectedState = {
+      dayNumber: expectedDayNumber,
+      programId: 'test-id-1234567890',
+    };
+    const result = mapStateToProps(initialState);
+    expect(result).toEqual(expectedState);
   });
 });

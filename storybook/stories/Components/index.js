@@ -8,7 +8,7 @@ import Screen from '../../../src/components/Screen';
 import ProgramList from '../../../src/components/ProgramList';
 import ProgramListItem, { ListItem } from '../../../src/components/ProgramListItem';
 import ExercisesHeading from '../../../src/components/ExercisesHeading';
-import ExerciseList from '../../../src/components/ExerciseList';
+import { ListOfExercises } from '../../../src/components/ExerciseList';
 
 storiesOf('Screen Template', module)
   .add('default', () =>
@@ -117,7 +117,7 @@ storiesOf('Exercises', module)
         loading: true,
       },
     };
-    return <ExerciseList {...props} />;
+    return <ListOfExercises {...props} />;
   })
   .add('List', () => {
     const exercises = [{
@@ -155,5 +155,5 @@ storiesOf('Exercises', module)
         },
       },
     };
-    return <ExerciseList {...props} />;
+    return <ListOfExercises {...props} />;
   });
