@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { loginWithGoogle } from '../../actions/login';
 
-const LoginGoogleButton = ({ onPressButton }) => {
+export const GoogleLogin = ({ onPressButton }) => {
   const props = {
     onPress: onPressButton,
     icon: { name: 'google', type: 'font-awesome', color: 'white' },
@@ -18,8 +20,13 @@ const LoginGoogleButton = ({ onPressButton }) => {
   return <Button {...props} />;
 };
 
-LoginGoogleButton.propTypes = {
+GoogleLogin.propTypes = {
   onPressButton: PropTypes.func.isRequired,
 };
 
-export default LoginGoogleButton;
+export const mapDispatchToProps = dispatch => ({
+  onPressButton: () => dispatch(loginWithGoogle()),
+});
+
+export default connect(null, mapDispatchToProps)(GoogleLogin);
+

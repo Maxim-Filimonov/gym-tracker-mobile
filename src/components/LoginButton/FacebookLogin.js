@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { loginWithFacebook } from '../../actions/login';
 
-const LoginFacebookButton = ({ onPressButton }) => {
+export const FacebookLogin = ({ onPressButton }) => {
   const props = {
     onPress: onPressButton,
     icon: { name: 'facebook', type: 'font-awesome' },
@@ -16,8 +18,12 @@ const LoginFacebookButton = ({ onPressButton }) => {
   return <Button {...props} />;
 };
 
-LoginFacebookButton.propTypes = {
+FacebookLogin.propTypes = {
   onPressButton: PropTypes.func.isRequired,
 };
 
-export default LoginFacebookButton;
+export const mapDispatchToProps = dispatch => ({
+  onPressButton: () => dispatch(loginWithFacebook()),
+});
+
+export default connect(null, mapDispatchToProps)(FacebookLogin);

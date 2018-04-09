@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
-import LoginWithFacebookButton from '../containers/LoginWithFacebook';
-import LoginWithGoogleButton from '../containers/LoginWithGoogle';
+import FacebookLoginButton from './LoginButton/FacebookLogin';
+import GoogleLoginButton from './LoginButton/GoogleLogin';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,8 +26,8 @@ const LoginSection = ({ isLoading }) => (
     {
       !isLoading &&
       <View>
-        <LoginWithFacebookButton />
-        <LoginWithGoogleButton />
+        <FacebookLoginButton />
+        <GoogleLoginButton />
       </View>
     }
   </View>
