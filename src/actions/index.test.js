@@ -77,59 +77,53 @@ describe('async actions', () => {
   });
 
   describe('selectProgram', () => {
-    it('creates SELECT_PROGRAM_SUCCESS when selectProgram request is done', () => {
-      const programId = 'testid';
-      const programName = 'test-name';
-      const startDate = new Date().toISOString().split('T')[0];
-      fetchMock
-        .put(
-          `${STR_TRCKR_API_URL}/programs/${programId}`,
-          {
-            body: { },
-            headers: { 'content-type': 'application/json' },
-          },
-        );
-
+    it('creates SELECT_PROGRAM_SUCCESS when selecting a program succeeds', () => {
+      const programId = '123456';
+      const programName = 'test program name';
+      const programStartDate = new Date().toISOString().split('T')[0];
       const expectedActions = [
         { type: types.SELECT_PROGRAM_REQUEST },
         {
           type: types.SELECT_PROGRAM_SUCCESS,
-          strengthProgram: {
-            id: programId,
-            name: programName,
-            startDate,
-          },
+          strengthProgram: { id: programId, name: programName, startDate: programStartDate },
         },
       ];
 
-      const store = mockStore({ user: { gymTrackerJWT: 'test-token' } });
+      global.fetch = jest.fn().mockImplementation(() =>
+        Promise.resolve({
+          ok: true,
+          json() {
+            return true;
+          },
+        }));
+
+      const store = mockStore({ user: {}, loading: false, program: {} });
 
       return store.dispatch(actions.selectProgram(programId, programName)).then(() => {
-        // return of async actions
         expect(store.getActions()).toEqual(expectedActions);
       });
     });
 
-    it('creates SELECT_PROGRAM_SUCCESS if api call fails', () => {
-      const programId = 'testid';
-      const programName = 'test-name';
-      fetchMock
-        .put(
-          `${STR_TRCKR_API_URL}/programs/${programId}`,
-          Promise.reject(new Error('Error message')),
-        );
+    it('creates SELECT_PROGRAM_FAILURE when selecting a program fails', () => {
+      const programId = '123456';
+      const programName = 'test program name';
 
       const expectedActions = [
         { type: types.SELECT_PROGRAM_REQUEST },
-        { type: types.SELECT_PROGRAM_FAILURE, message: 'Problem connecting to GymBuddy.' },
+        {
+          type: types.SELECT_PROGRAM_FAILURE,
+          message: 'Problem connecting to GymBuddy.',
+        },
       ];
 
-      const store = mockStore({ user: { gymTrackerJWT: 'test-token' } });
+      global.fetch = jest.fn().mockImplementation(() => Promise.reject());
+
+      const store = mockStore({ user: {}, loading: false, program: {} });
 
       return store.dispatch(actions.selectProgram(programId, programName)).then(() => {
-        // return of async actions
         expect(store.getActions()).toEqual(expectedActions);
       });
     });
   });
 });
+

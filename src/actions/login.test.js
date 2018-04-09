@@ -1,13 +1,13 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import * as login from '../../actions/login';
-import * as types from '../../actions/types';
-import * as expoLogin from '../../api/logins';
+import * as login from './login';
+import * as types from './types';
+import * as expoLogin from '../api/logins';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../../actions', () => ({
+jest.mock('./index', () => ({
   fetchJWT: jest.fn(() => () => Promise.resolve()),
 }));
 
