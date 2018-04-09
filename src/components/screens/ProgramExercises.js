@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import Screen from '../Screen';
-import ExercisesHeading from '../../containers/ExercisesHeadingDetails';
+import ExercisesHeading from '../ExercisesHeading';
 import ExerciseList from '../ExerciseList';
 
 const ProgramExercises = () => (

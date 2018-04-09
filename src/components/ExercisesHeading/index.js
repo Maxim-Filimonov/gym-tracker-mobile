@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import * as utils from '../../utils';
 
 const styles = StyleSheet.create({
   header: {
@@ -23,17 +25,23 @@ const styles = StyleSheet.create({
   },
 });
 
-const ExercisesHeading = ({ programName, weekNumber, dayNumber }) => (
+export const Heading = ({ programName, weekNumber, dayNumber }) => (
   <View>
     <Text style={styles.header}>{programName}</Text>
     <Text style={styles.subheader}>{`Week ${weekNumber} - Day ${dayNumber}`}</Text>
   </View>
 );
 
-ExercisesHeading.propTypes = {
+Heading.propTypes = {
   programName: PropTypes.string.isRequired,
   weekNumber: PropTypes.number.isRequired,
   dayNumber: PropTypes.number.isRequired,
 };
 
-export default ExercisesHeading;
+export const mapStateToProps = state => ({
+  programName: state.program.name,
+  weekNumber: utils.currentWeekNumber(state.program.startDate),
+  dayNumber: utils.currentDayNumber(state.program.startDate),
+});
+
+export default connect(mapStateToProps)(Heading);
