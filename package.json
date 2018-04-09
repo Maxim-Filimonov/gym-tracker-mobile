@@ -21,6 +21,7 @@
     "eslint-plugin-react": "^7.7.0",
     "fetch-mock": "^6.3.0",
     "identity-obj-proxy": "^3.0.0",
+    "jest-each": "^0.3.1",
     "jest-expo": "^25.1.0",
     "react-dom": "^16.2.0",
     "react-native-scripts": "1.11.1",
