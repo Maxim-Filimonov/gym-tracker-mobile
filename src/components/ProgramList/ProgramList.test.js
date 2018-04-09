@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import ProgramList, { CreateList } from '../../components/ProgramList';
+import { List, CreateList, mapStateToProps } from './index';
 
 describe('<ProgramList />', () => {
   it('renders the page without crashing', () => {
@@ -12,29 +12,29 @@ describe('<ProgramList />', () => {
         { id: '4', name: 'test4', summary: 'test summary 4' },
       ],
     };
-    shallow(<ProgramList
+    shallow(<List
       isLoadingSelectedProgram={false}
       onSelectProgram={jest.fn()}
       programs={programs}
     />);
   });
 
-  it('renders the loading page without crashing', () => {
+  it('renders the loading page', () => {
     const programs = {
       loading: true,
     };
-    shallow(<ProgramList
+    shallow(<List
       onSelectProgram={jest.fn()}
       programs={programs}
       isLoadingSelectedProgram={false}
     />);
   });
 
-  it('renders loading when a program is selected without crashing', () => {
+  it('renders loading when a program is selected', () => {
     const programs = {
       allPrograms: [],
     };
-    shallow(<ProgramList
+    shallow(<List
       onSelectProgram={jest.fn()}
       isLoadingSelectedProgram
       programs={programs}
@@ -54,5 +54,30 @@ describe('<CreateList />', () => {
       ],
     };
     shallow(<CreateList {...props} />);
+  });
+});
+
+describe('# mapStateToProps', () => {
+  it('isLoadingSelectedProgram state should be true when loading', () => {
+    const initialState = {
+      loading: {
+        selectProgram: true,
+      },
+    };
+    const expectedState = {
+      isLoadingSelectedProgram: true,
+    };
+    const result = mapStateToProps(initialState);
+    expect(result).toEqual(expectedState);
+  });
+  it('isLoadingSelectedProgram state should be false when not loading', () => {
+    const initialState = {
+      loading: {},
+    };
+    const expectedState = {
+      isLoadingSelectedProgram: false,
+    };
+    const result = mapStateToProps(initialState);
+    expect(result).toEqual(expectedState);
   });
 });

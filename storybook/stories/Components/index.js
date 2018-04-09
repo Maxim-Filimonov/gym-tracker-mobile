@@ -1,14 +1,20 @@
 import React from 'react';
-import { Text, Alert } from 'react-native';
+import { Text } from 'react-native';
+import { Provider } from 'react-redux';
+import { NativeRouter } from 'react-router-native';
 import { storiesOf } from '@storybook/react-native';
+import configureStore from '../../../configureStore';
+import GraphQLWrapper from '../../../src/containers/GraphQLWrapper';
 import AppFooter from '../../../src/components/AppFooter';
 import AppIntro from '../../../src/components/AppIntro';
 import Header from '../../../src/components/Header';
 import Screen from '../../../src/components/Screen';
-import ProgramList from '../../../src/components/ProgramList';
-import ProgramListItem, { ListItem } from '../../../src/components/ProgramListItem';
+import { List } from '../../../src/components/ProgramList';
+import ProgramListItem, { ProgramItem } from '../../../src/components/ProgramListItem';
 import { Heading } from '../../../src/components/ExercisesHeading';
 import { ListOfExercises } from '../../../src/components/ExerciseList';
+
+const store = configureStore();
 
 storiesOf('Screen Template', module)
   .add('default', () =>
@@ -48,10 +54,6 @@ storiesOf('Training Program List', module)
   .add('Default', () => {
     const props = {
       isLoadingSelectedProgram: false,
-      onSelectProgram: (id, name) => Alert.alert(
-        'onSelectProgram Callback',
-        `\nClick Callback\n\nProgram id: ${id}\nProgram name: ${name}`,
-      ),
       programs: {
         allPrograms: [
           { id: 'uuid-01', name: 'test1', summary: 'test summary 1' },
@@ -61,45 +63,43 @@ storiesOf('Training Program List', module)
         ],
       },
     };
-    return <ProgramList {...props} />;
+    return (
+      <GraphQLWrapper>
+        <Provider store={store}>
+          <NativeRouter>
+            <List {...props} />
+          </NativeRouter>
+        </Provider>
+      </GraphQLWrapper>
+    );
   })
-  .add('List item (container)', () => {
+  .add('List item - default', () => {
     const props = {
       id: '1234567890',
       name: 'Training Program name',
       summary: 'This is the summary of the training program ... lorem ipsum so and so and so forth may the fourth be with you',
-      onPressSelectProgram: () => Alert.alert(
-        'onSelectProgram Callback',
-        '\nClick Callback\n\nProgram id: 1234567890\nProgram name: Training Program name',
-      ),
-    };
-    return <ProgramListItem {...props} />;
-  })
-  .add('List item (component) - default', () => {
-    const props = {
-      id: '1234567890',
-      name: 'Training Program name',
-      summary: 'This is the summary of the training program ... lorem ipsum so and so and so forth may the fourth be with you',
-      onPressSelectProgram: () => Alert.alert(
-        'onSelectProgram Callback',
+      onPressSelectProgram: () => console.log(
+        'onSelectProgram Callback:',
         '\nClick Callback\n\nProgram id: 1234567890\nProgram name: Training Program name',
       ),
       showSummary: false,
+      onPressShowSummary: () => console.log('onPressShowSummary event'),
     };
-    return <ListItem {...props} />;
+    return <ProgramItem {...props} />;
   })
-  .add('List item (component) - show summary', () => {
+  .add('List item - show summary', () => {
     const props = {
       id: '1234567890',
       name: 'Training Program name',
       summary: 'This is the summary of the training program ... lorem ipsum so and so and so forth may the fourth be with you',
-      onPressSelectProgram: () => Alert.alert(
-        'onSelectProgram Callback',
+      onPressSelectProgram: () => console.log(
+        'onSelectProgram Callback:',
         '\nClick Callback\n\nProgram id: 1234567890\nProgram name: Training Program name',
       ),
       showSummary: true,
+      onPressShowSummary: () => console.log('onPressShowSummary event'),
     };
-    return <ListItem {...props} />;
+    return <ProgramItem {...props} />;
   });
 
 storiesOf('Exercises', module)

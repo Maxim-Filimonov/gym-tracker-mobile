@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import Screen from '../Screen';
-import ProgramList from '../../containers/ListOfPrograms';
+import ProgramList from '../ProgramList';
 import GraphQLWrapper from '../../../src/containers/GraphQLWrapper';
 
 const ProgramSelection = () => (

@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-native';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
 import { View, Text } from 'react-native';
 import { Button } from 'react-native-elements';
+import { selectProgram } from '../../actions';
 
 const styles = {
   container: {
@@ -23,13 +27,13 @@ const styles = {
   },
 };
 
-export const ListItem = ({
-  name, summary, onPressShowSummary, onPressSelectProgram, showSummary,
+export const ProgramItem = ({
+  id, name, summary, onPressShowSummary, onPressSelectProgram, showSummary,
 }) => {
   const selectButtonProps = {
     rightIcon: { name: 'check-circle' },
     title: 'Select Training Program',
-    onPress: onPressSelectProgram,
+    onPress: () => onPressSelectProgram(id, name),
     buttonStyle: {
       backgroundColor: '#31bb5a',
     },
@@ -55,7 +59,8 @@ export const ListItem = ({
   );
 };
 
-ListItem.propTypes = {
+ProgramItem.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
   showSummary: PropTypes.bool.isRequired,
@@ -63,7 +68,7 @@ ListItem.propTypes = {
   onPressSelectProgram: PropTypes.func.isRequired,
 };
 
-class ProgramListItem extends React.Component {
+export class TrainingProgramListItem extends React.Component {
   state = {
     showSummary: false,
   };
@@ -75,7 +80,7 @@ class ProgramListItem extends React.Component {
   };
 
   render() {
-    return (<ListItem
+    return (<ProgramItem
       onPressShowSummary={this.onPressShowSummary}
       showSummary={this.state.showSummary}
       {...this.props}
@@ -83,11 +88,21 @@ class ProgramListItem extends React.Component {
   }
 }
 
-ProgramListItem.propTypes = {
+TrainingProgramListItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
   onPressSelectProgram: PropTypes.func.isRequired,
 };
 
-export default ProgramListItem;
+export const mapDispatchToProps = (dispatch, ownProps) => ({
+  onPressSelectProgram: (programId, programName) => {
+    Promise.resolve(dispatch(selectProgram(programId, programName)))
+      .then(() => ownProps.history.push(`/exercises/${programId}`));
+  },
+});
+
+export default compose(
+  withRouter,
+  connect(null, mapDispatchToProps),
+)(TrainingProgramListItem);
