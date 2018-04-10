@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'flex-start',
-    backgroundColor: 'darkgrey',
+    backgroundColor: '#fff',
     margin: 10,
   },
   name: {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   targetsContainer: {
     alignItems: 'center',
-    backgroundColor: '#eee',
+    backgroundColor: '#edf5f0',
     padding: 10,
     borderBottomWidth: 1,
     borderColor: '#91969880',
@@ -55,17 +55,35 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     marginBottom: 4,
     fontWeight: 'bold',
-    color: '#263A40',
+    color: '#2a4032',
+    padding: 5,
   },
   targets: {
     fontSize: 15,
-    color: '#263A40',
+    color: '#2a4032',
   },
   btnAddSet: {
     backgroundColor: '#00a442',
     margin: 10,
-    padding: 8,
-    width: '100%',
+    padding: 10,
+    width: 316,
+    alignSelf: 'center',
+  },
+  btnSave: {
+    backgroundColor: '#00a442',
+    marginTop: 20,
+    marginBottom: 10,
+    padding: 10,
+    width: 316,
+    alignSelf: 'center',
+  },
+  btnCancel: {
+    backgroundColor: '#ff6f4d',
+    marginTop: 8,
+    marginBottom: 10,
+    padding: 10,
+    width: 316,
+    alignSelf: 'center',
   },
   ptNoteContainer: {
     backgroundColor: '#eee',
@@ -78,6 +96,21 @@ const styles = StyleSheet.create({
   },
   ptNoteText: {
     color: '#263A40',
+  },
+  formContainer: {
+    paddingTop: 10,
+    paddingBottom: 20,
+    backgroundColor: '#115473',
+  },
+  formInput: {
+    borderColor: '#222',
+    backgroundColor: '#fff',
+    paddingLeft: 8,
+    paddingRight: 8,
+  },
+  formLabel: {
+    color: '#eee',
+    marginBottom: 4,
   },
 });
 

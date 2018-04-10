@@ -165,6 +165,7 @@ storiesOf('ExerciseList', module)
 storiesOf('ExerciseBox (Container)', module)
   .add('Default', () => {
     const props = {
+      id: 'test-id',
       name: 'Exercise Name',
       targets: { reps: 1, sets: 2 },
       ptNote: 'These are the PT notes/comments for the exercise',
@@ -173,6 +174,7 @@ storiesOf('ExerciseBox (Container)', module)
   })
   .add('With Last Session', () => {
     const props = {
+      id: 'test-id',
       name: 'Exercise Name',
       lastSession: {
         week: 'week 1',
@@ -193,7 +195,7 @@ storiesOf('SingleExerciseBox (Component)', module)
       targets: { reps: 1, sets: 2 },
       ptNote: 'These are the PT notes/comments for the exercise',
       showForm: false,
-      onPressAddSet: () => Alert.alert('onPressAddSet', 'Pressed Add Set Button'),
+      onPressToggleForm: () => Alert.alert('onPressAddSet', 'Pressed Add Set Button'),
     };
     return <SingleExerciseBox {...props} />;
   })
@@ -209,7 +211,7 @@ storiesOf('SingleExerciseBox (Component)', module)
       targets: { reps: 1, sets: 2 },
       ptNote: 'These are the PT notes/comments for the exercise',
       showForm: false,
-      onPressAddSet: () => Alert.alert('onPressAddSet', 'Pressed Add Set Button'),
+      onPressToggleForm: () => Alert.alert('onPressToggleForm', 'Toggle form display button'),
     };
     return <SingleExerciseBox {...props} />;
   })
@@ -225,7 +227,7 @@ storiesOf('SingleExerciseBox (Component)', module)
       targets: { reps: 1, sets: 2 },
       ptNote: 'These are the PT notes/comments for the exercise',
       showForm: true,
-      onPressAddSet: () => Alert.alert('onPressAddSet', 'Pressed Add Set Button'),
+      onPressToggleForm: () => Alert.alert('onPressToggleForm', 'Toggle form display button'),
     };
     return <SingleExerciseBox {...props} />;
   });

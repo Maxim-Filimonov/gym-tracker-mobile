@@ -5,6 +5,7 @@ import ExerciseBox, { SingleExerciseBox, LastSessionBox } from './index';
 describe('<ExerciseBox />', () => {
   it('should render without crashing', () => {
     const props = {
+      id: 'test-id',
       name: '',
       targets: { reps: 1, sets: 2 },
       ptNote: '',
@@ -16,6 +17,7 @@ describe('<ExerciseBox />', () => {
 
   it('should show the last session results', () => {
     const props = {
+      id: 'test-id',
       name: '',
       lastSession: {
         week: 'week 1',
@@ -25,7 +27,7 @@ describe('<ExerciseBox />', () => {
       },
       targets: { reps: 1, sets: 2 },
       ptNote: '',
-      onPressAddSet: jest.fn(),
+      onPressToggleForm: jest.fn(),
       showForm: false,
     };
     shallow(<SingleExerciseBox {...props} />);
@@ -33,6 +35,7 @@ describe('<ExerciseBox />', () => {
 
   it('should show the add set form when pressing the Add Set button', () => {
     const props = {
+      id: 'test-id',
       name: '',
       lastSession: {
         week: 'week 1',
@@ -42,11 +45,9 @@ describe('<ExerciseBox />', () => {
       },
       targets: { reps: 1, sets: 2 },
       ptNote: '',
-      onPressAddSet: jest.fn(),
-      showForm: false,
     };
     const wrapper = shallow(<ExerciseBox {...props} />);
-    wrapper.find('SingleExerciseBox').simulate('pressAddSet');
+    wrapper.find('SingleExerciseBox').simulate('pressToggleForm');
     expect(wrapper.find('SingleExerciseBox').prop('showForm')).toEqual(true);
   });
 });

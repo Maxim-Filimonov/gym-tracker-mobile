@@ -35,7 +35,7 @@ LastSessionBox.defaultProps = {
 };
 
 export const SingleExerciseBox = ({
-  name, lastSession, targets, ptNote, showForm, onPressAddSet,
+  name, lastSession, targets, ptNote, showForm, onPressToggleForm,
 }) => (
   <View style={styles.container}>
     <Text style={styles.name}>{name.toUpperCase()}</Text>
@@ -51,27 +51,43 @@ export const SingleExerciseBox = ({
       <View style={styles.row}>
         <Text style={styles.td}>Click &apos;Add Set&apos; to record your set</Text>
       </View>
-      {
-        showForm ?
-          <View>
-            <FormLabel>Name</FormLabel>
-            <FormInput />
-            <FormValidationMessage>Error message</FormValidationMessage>
-          </View> :
-          <View style={styles.row}>
-            <Button
-              icon={{ name: 'add' }}
-              onPress={onPressAddSet}
-              buttonStyle={styles.btnAddSet}
-              fontSize={15}
-              title="Add Set"
-            />
-          </View>
-      }
     </View>
+    {
+      showForm ?
+        <View style={styles.formContainer}>
+          <FormLabel labelStyle={styles.formLabel}>Weight</FormLabel>
+          <FormInput placeholder="E.g. 10 or Body Weight" maxLength={25} containerStyle={styles.formInput} />
+          <FormLabel labelStyle={styles.formLabel}>Reps</FormLabel>
+          <FormInput placeholder="Number of reps" keyboardType="numeric" maxLength={20} containerStyle={styles.formInput} />
+          {/* <FormValidationMessage>Error message</FormValidationMessage> */}
+          <Button
+            icon={{ name: 'playlist-add-check' }}
+            onPress={() => console.log('save new set here ... dispatch something, go on!')}
+            buttonStyle={styles.btnSave}
+            fontSize={15}
+            title="Save"
+          />
+          <Button
+            icon={{ name: 'clear' }}
+            onPress={onPressToggleForm}
+            buttonStyle={styles.btnCancel}
+            fontSize={15}
+            title="Cancel"
+          />
+        </View> :
+        <View style={styles.row}>
+          <Button
+            icon={{ name: 'playlist-add' }}
+            onPress={onPressToggleForm}
+            buttonStyle={styles.btnAddSet}
+            fontSize={15}
+            title="Add Set"
+          />
+        </View>
+    }
     <View style={styles.targetsContainer}>
-      <Text style={styles.targetsHeading}>Exercise Target Sets & Reps</Text>
-      <Text style={styles.targets}>Sets: {targets.sets}, Reps: {targets.reps}</Text>
+      <Text style={styles.targetsHeading}>TARGET SETS & REPS:</Text>
+      <Text style={styles.targets}>Sets: {targets.sets}  Reps: {targets.reps}</Text>
     </View>
     <View style={styles.ptNoteContainer}>
       <Text style={styles.ptNoteHeading}>Exercise Notes: </Text>
@@ -94,7 +110,7 @@ SingleExerciseBox.propTypes = {
   }).isRequired,
   ptNote: PropTypes.string,
   showForm: PropTypes.bool.isRequired,
-  onPressAddSet: PropTypes.func.isRequired,
+  onPressToggleForm: PropTypes.func.isRequired,
 };
 
 SingleExerciseBox.defaultProps = {
@@ -107,7 +123,7 @@ class ExerciseBox extends React.Component {
     showForm: false,
   };
 
-  onPressAddSet = () => {
+  onPressToggleForm = () => {
     this.setState({
       showForm: !this.state.showForm,
     });
@@ -116,7 +132,7 @@ class ExerciseBox extends React.Component {
     return (<SingleExerciseBox
       {...this.props}
       showForm={this.state.showForm}
-      onPressAddSet={this.onPressAddSet}
+      onPressToggleForm={this.onPressToggleForm}
     />);
   }
 }

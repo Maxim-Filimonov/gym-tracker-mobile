@@ -20,6 +20,7 @@ export const ListOfExercises = ({ data }) => {
 
 export const SingleExerciseView = (ex) => {
   const props = {
+    id: ex.id,
     name: ex.type,
     targets: {
       sets: ex.sets,
