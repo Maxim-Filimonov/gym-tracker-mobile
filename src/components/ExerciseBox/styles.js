@@ -88,7 +88,8 @@ const styles = StyleSheet.create({
   ptNoteContainer: {
     backgroundColor: '#eee',
     padding: 10,
-
+    borderBottomWidth: 2,
+    borderColor: '#263A40',
   },
   ptNoteHeading: {
     fontWeight: 'bold',
