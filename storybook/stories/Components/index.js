@@ -16,7 +16,7 @@ import { ListOfExercises } from '../../../src/components/ExerciseList';
 import { LoginSection } from '../../../src/components/LoginButtonsSection';
 import FacebookLoginButton from '../../../src/components/LoginButton/FacebookLogin';
 import GoogleLoginButton from '../../../src/components/LoginButton/GoogleLogin';
-import ExerciseBox, { SingleExerciseBox } from '../../../src/components/ExerciseBox';
+import ExerciseBox from '../../../src/components/ExerciseBox';
 
 const store = configureStore();
 
@@ -162,7 +162,7 @@ storiesOf('ExerciseList', module)
     return <ListOfExercises {...props} />;
   });
 
-storiesOf('ExerciseBox (Container)', module)
+storiesOf('ExerciseBox', module)
   .add('Default', () => {
     const props = {
       id: 'test-id',
@@ -186,50 +186,6 @@ storiesOf('ExerciseBox (Container)', module)
       ptNote: 'These are the PT notes/comments for the exercise',
     };
     return <ExerciseBox {...props} />;
-  });
-
-storiesOf('SingleExerciseBox (Component)', module)
-  .add('Default', () => {
-    const props = {
-      name: 'Exercise Name',
-      targets: { reps: 1, sets: 2 },
-      ptNote: 'These are the PT notes/comments for the exercise',
-      showForm: false,
-      onPressToggleForm: () => Alert.alert('onPressAddSet', 'Pressed Add Set Button'),
-    };
-    return <SingleExerciseBox {...props} />;
-  })
-  .add('With Last Session', () => {
-    const props = {
-      name: 'Exercise Name',
-      lastSession: {
-        week: 'week 1',
-        day: 'day 1',
-        weight: '20',
-        reps: 10,
-      },
-      targets: { reps: 1, sets: 2 },
-      ptNote: 'These are the PT notes/comments for the exercise',
-      showForm: false,
-      onPressToggleForm: () => Alert.alert('onPressToggleForm', 'Toggle form display button'),
-    };
-    return <SingleExerciseBox {...props} />;
-  })
-  .add('With Add Set Form', () => {
-    const props = {
-      name: 'Exercise Name',
-      lastSession: {
-        week: 'week 1',
-        day: 'day 1',
-        weight: '20',
-        reps: 10,
-      },
-      targets: { reps: 1, sets: 2 },
-      ptNote: 'These are the PT notes/comments for the exercise',
-      showForm: true,
-      onPressToggleForm: () => Alert.alert('onPressToggleForm', 'Toggle form display button'),
-    };
-    return <SingleExerciseBox {...props} />;
   });
 
 storiesOf('Login Section', module)

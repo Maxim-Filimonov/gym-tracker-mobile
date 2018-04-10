@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
-import { Button, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import SetForm from './SetForm';
 import styles from './styles';
 
 export const LastSessionBox = ({ lastSession }) => (
@@ -34,8 +34,8 @@ LastSessionBox.defaultProps = {
   lastSession: null,
 };
 
-export const SingleExerciseBox = ({
-  name, lastSession, targets, ptNote, showForm, onPressToggleForm,
+const ExerciseBox = ({
+  name, lastSession, targets, ptNote,
 }) => (
   <View style={styles.container}>
     <Text style={styles.name}>{name.toUpperCase()}</Text>
@@ -52,39 +52,7 @@ export const SingleExerciseBox = ({
         <Text style={styles.td}>Click &apos;Add Set&apos; to record your set</Text>
       </View>
     </View>
-    {
-      showForm ?
-        <View style={styles.formContainer}>
-          <FormLabel labelStyle={styles.formLabel}>Weight</FormLabel>
-          <FormInput placeholder="E.g. 10 or Body Weight" maxLength={25} containerStyle={styles.formInput} />
-          <FormLabel labelStyle={styles.formLabel}>Reps</FormLabel>
-          <FormInput placeholder="Number of reps" keyboardType="numeric" maxLength={20} containerStyle={styles.formInput} />
-          {/* <FormValidationMessage>Error message</FormValidationMessage> */}
-          <Button
-            icon={{ name: 'playlist-add-check' }}
-            onPress={() => console.log('save new set here ... dispatch something, go on!')}
-            buttonStyle={styles.btnSave}
-            fontSize={15}
-            title="Save"
-          />
-          <Button
-            icon={{ name: 'clear' }}
-            onPress={onPressToggleForm}
-            buttonStyle={styles.btnCancel}
-            fontSize={15}
-            title="Cancel"
-          />
-        </View> :
-        <View style={styles.row}>
-          <Button
-            icon={{ name: 'playlist-add' }}
-            onPress={onPressToggleForm}
-            buttonStyle={styles.btnAddSet}
-            fontSize={15}
-            title="Add Set"
-          />
-        </View>
-    }
+    <SetForm />
     <View style={styles.targetsContainer}>
       <Text style={styles.targetsHeading}>TARGET SETS & REPS:</Text>
       <Text style={styles.targets}>Sets: {targets.sets}  Reps: {targets.reps}</Text>
@@ -96,7 +64,7 @@ export const SingleExerciseBox = ({
   </View>
 );
 
-SingleExerciseBox.propTypes = {
+ExerciseBox.propTypes = {
   name: PropTypes.string.isRequired,
   lastSession: PropTypes.shape({
     week: PropTypes.string.isRequired,
@@ -109,32 +77,11 @@ SingleExerciseBox.propTypes = {
     reps: PropTypes.number.isRequired,
   }).isRequired,
   ptNote: PropTypes.string,
-  showForm: PropTypes.bool.isRequired,
-  onPressToggleForm: PropTypes.func.isRequired,
 };
 
-SingleExerciseBox.defaultProps = {
+ExerciseBox.defaultProps = {
   lastSession: null,
   ptNote: '',
 };
-
-class ExerciseBox extends React.Component {
-  state = {
-    showForm: false,
-  };
-
-  onPressToggleForm = () => {
-    this.setState({
-      showForm: !this.state.showForm,
-    });
-  }
-  render() {
-    return (<SingleExerciseBox
-      {...this.props}
-      showForm={this.state.showForm}
-      onPressToggleForm={this.onPressToggleForm}
-    />);
-  }
-}
 
 export default ExerciseBox;
