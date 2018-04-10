@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ExerciseBox, { SingleExerciseBox } from './index';
+import ExerciseBox, { SingleExerciseBox, LastSessionBox } from './index';
 
 describe('<ExerciseBox />', () => {
   it('should render without crashing', () => {
@@ -50,3 +50,19 @@ describe('<ExerciseBox />', () => {
     expect(wrapper.find('SingleExerciseBox').prop('showForm')).toEqual(true);
   });
 });
+
+
+describe('<LastSessionBox />', () => {
+  it('renders without crashing', () => {
+    const props = {
+      lastSession: {
+        week: 'week 1',
+        day: 'day 1',
+        weight: '20',
+        reps: 10,
+      },
+    };
+    shallow(<LastSessionBox {...props} />);
+  });
+});
+

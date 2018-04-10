@@ -4,27 +4,42 @@ import { View, Text } from 'react-native';
 import { Button, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import styles from './styles';
 
+export const LastSessionBox = ({ lastSession }) => (
+  lastSession ?
+    (
+      <View style={styles.lastSession}>
+        <Text style={styles.lastSessionText}>
+            Last Session: {lastSession.week} - {lastSession.day}
+        </Text>
+        <Text style={styles.lastSessionText}>
+            Weight: {lastSession.weight} - Max Reps: {lastSession.reps}
+        </Text>
+      </View>
+    ) :
+      <View style={styles.lastSession}>
+        <Text style={styles.lastSessionText}>No previous session details</Text>
+      </View>
+);
+
+LastSessionBox.propTypes = {
+  lastSession: PropTypes.shape({
+    week: PropTypes.string.isRequired,
+    day: PropTypes.string.isRequired,
+    weight: PropTypes.string.isRequired,
+    reps: PropTypes.number.isRequired,
+  }),
+};
+
+LastSessionBox.defaultProps = {
+  lastSession: null,
+};
+
 export const SingleExerciseBox = ({
   name, lastSession, targets, ptNote, showForm, onPressAddSet,
 }) => (
   <View style={styles.container}>
     <Text style={styles.name}>{name.toUpperCase()}</Text>
-    {
-      lastSession ?
-        (
-          <View style={styles.lastSession}>
-            <Text style={styles.lastSessionText}>
-              Last Session: {lastSession.week} - {lastSession.day}
-            </Text>
-            <Text style={styles.lastSessionText}>
-              Weight: {lastSession.weight} - Max Reps: {lastSession.reps}
-            </Text>
-          </View>
-        ) :
-          <View style={styles.lastSession}>
-            <Text style={styles.lastSessionText}>No previous session details</Text>
-          </View>
-    }
+    <LastSessionBox lastSession={lastSession} />
     <View style={styles.table}>
       <View style={styles.row}>
         <Text style={styles.th}>Del</Text>
