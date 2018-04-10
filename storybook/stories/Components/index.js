@@ -212,6 +212,22 @@ storiesOf('SingleExerciseBox (Component)', module)
       onPressAddSet: () => Alert.alert('onPressAddSet', 'Pressed Add Set Button'),
     };
     return <SingleExerciseBox {...props} />;
+  })
+  .add('With Add Set Form', () => {
+    const props = {
+      name: 'Exercise Name',
+      lastSession: {
+        week: 'week 1',
+        day: 'day 1',
+        weight: '20',
+        reps: 10,
+      },
+      targets: { reps: 1, sets: 2 },
+      ptNote: 'These are the PT notes/comments for the exercise',
+      showForm: true,
+      onPressAddSet: () => Alert.alert('onPressAddSet', 'Pressed Add Set Button'),
+    };
+    return <SingleExerciseBox {...props} />;
   });
 
 storiesOf('Login Section', module)
