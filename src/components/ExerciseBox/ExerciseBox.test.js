@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ExerciseBox from './ExerciseBox';
+import ExerciseBox from './index';
 
 describe('<ExerciseBox />', () => {
   it('should render without crashing', () => {
