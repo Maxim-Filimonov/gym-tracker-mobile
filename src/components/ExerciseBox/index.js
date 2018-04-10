@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const ExerciseBox = ({
-  name, lastSession, targets, ptNote,
+export const SingleExerciseBox = ({
+  name, lastSession, targets, ptNote, showForm, onPressAddSet,
 }) => (
   <View style={styles.container}>
     <Text style={styles.name}>{name}</Text>
@@ -76,9 +76,13 @@ const ExerciseBox = ({
       <View style={styles.row}>
         <Text style={styles.td}>Click &apos;Add Set&apos; to record your set</Text>
       </View>
-      <View style={styles.row}>
-        <Button buttonStyle={{ backgroundColor: 'green', margin: 10 }} title="Add New Set" />
-      </View>
+      {
+        showForm ?
+          <View><Text>Showing form here</Text></View> :
+          <View style={styles.row}>
+            <Button onPress={onPressAddSet} buttonStyle={{ backgroundColor: 'green', margin: 10 }} title="Add New Set" />
+          </View>
+      }
       <View style={styles.targets}>
         <Text style={styles.th}>Target Sets & Reps</Text>
         <Text style={styles.td}>Sets: {targets.sets}, Reps: {targets.reps}</Text>
@@ -95,13 +99,7 @@ const ExerciseBox = ({
   </View>
 );
 
-/*
-        <Button style={buttonStyle.button}>
-          <Text style={buttonStyle.text}>Add New Set</Text>
-        </Button>
- */
-
-ExerciseBox.propTypes = {
+SingleExerciseBox.propTypes = {
   name: PropTypes.string.isRequired,
   lastSession: PropTypes.shape({
     week: PropTypes.string.isRequired,
@@ -114,11 +112,32 @@ ExerciseBox.propTypes = {
     reps: PropTypes.number.isRequired,
   }).isRequired,
   ptNote: PropTypes.string,
+  showForm: PropTypes.bool.isRequired,
+  onPressAddSet: PropTypes.func.isRequired,
 };
 
-ExerciseBox.defaultProps = {
+SingleExerciseBox.defaultProps = {
   lastSession: null,
   ptNote: '',
 };
+
+class ExerciseBox extends React.Component {
+  state = {
+    showForm: false,
+  };
+
+  onPressAddSet = () => {
+    this.setState({
+      showForm: !this.state.showForm,
+    });
+  }
+  render() {
+    return (<SingleExerciseBox
+      {...this.props}
+      showForm={this.state.showForm}
+      onPressAddSet={this.onPressAddSet}
+    />);
+  }
+}
 
 export default ExerciseBox;
