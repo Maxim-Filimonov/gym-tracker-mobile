@@ -69,7 +69,7 @@ InputForm.propTypes = {
   onPressToggleForm: PropTypes.func.isRequired,
 };
 
-class SetForm extends React.Component {
+export class SetForm extends React.Component {
   state = {
     showForm: false,
   }
@@ -81,9 +81,10 @@ class SetForm extends React.Component {
   }
 
   render() {
+    const { handleSubmit } = this.props;
     return (
       <InputForm
-        handleSubmit={this.props.handleSubmit}
+        handleSubmit={handleSubmit}
         showForm={this.state.showForm}
         onPressToggleForm={this.onPressToggleForm}
       />);
