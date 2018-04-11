@@ -1,19 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
-import { Button, FormLabel, FormInput } from 'react-native-elements';
+import { View, StyleSheet } from 'react-native';
+import { Button } from 'react-native-elements';
+import { Field, reduxForm } from 'redux-form';
+import TextField from './TextField';
 import styles from './styles';
 
-export const InputForm = ({ showForm, onPressToggleForm }) => (
+const submitInputForm = (values) => {
+  console.log('submitting form', values);
+  // need the exercise id
+};
+
+export const InputForm = ({ showForm, onPressToggleForm, handleSubmit }) => (
   showForm ?
     <View style={styles.formContainer}>
-      <FormLabel labelStyle={styles.formLabel}>Weight</FormLabel>
-      <FormInput placeholder="E.g. 10 or Body Weight" maxLength={25} containerStyle={styles.formInput} />
-      <FormLabel labelStyle={styles.formLabel}>Reps</FormLabel>
-      <FormInput placeholder="Number of reps" keyboardType="numeric" maxLength={20} containerStyle={styles.formInput} />
+      <Field
+        name="weight"
+        label="Weight"
+        placeholder="E.g. 10 or Body Weight"
+        maxLength={25}
+        styles={{
+            formLabel: StyleSheet.flatten(styles.formLabel),
+            formInput: StyleSheet.flatten(styles.formInput),
+          }}
+        component={TextField}
+      />
+      <Field
+        name="reps"
+        label="Reps"
+        placeholder="Number of reps"
+        maxLength={20}
+        styles={{
+            formLabel: StyleSheet.flatten(styles.formLabel),
+            formInput: StyleSheet.flatten(styles.formInput),
+          }}
+        keyboardType="numeric"
+        component={TextField}
+      />
       <Button
         icon={{ name: 'playlist-add-check' }}
-        onPress={() => console.log('save new set here ... dispatch something!')}
+        onPress={handleSubmit(submitInputForm)}
         buttonStyle={styles.btnSave}
         fontSize={15}
         title="Save"
@@ -38,6 +64,7 @@ export const InputForm = ({ showForm, onPressToggleForm }) => (
 );
 
 InputForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
   showForm: PropTypes.bool.isRequired,
   onPressToggleForm: PropTypes.func.isRequired,
 };
@@ -54,8 +81,19 @@ class SetForm extends React.Component {
   }
 
   render() {
-    return <InputForm showForm={this.state.showForm} onPressToggleForm={this.onPressToggleForm} />;
+    return (
+      <InputForm
+        handleSubmit={this.props.handleSubmit}
+        showForm={this.state.showForm}
+        onPressToggleForm={this.onPressToggleForm}
+      />);
   }
 }
 
-export default SetForm;
+SetForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};
+
+export default reduxForm({
+  form: 'setForm',
+})(SetForm);

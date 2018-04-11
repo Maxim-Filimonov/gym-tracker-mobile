@@ -170,7 +170,7 @@ storiesOf('ExerciseBox', module)
       targets: { reps: 1, sets: 2 },
       ptNote: 'These are the PT notes/comments for the exercise',
     };
-    return <ExerciseBox {...props} />;
+    return <Provider store={store}><ExerciseBox {...props} /></Provider>;
   })
   .add('With Last Session', () => {
     const props = {
@@ -185,7 +185,7 @@ storiesOf('ExerciseBox', module)
       targets: { reps: 1, sets: 2 },
       ptNote: 'These are the PT notes/comments for the exercise',
     };
-    return <ExerciseBox {...props} />;
+    return <Provider store={store}><ExerciseBox {...props} /></Provider>;
   });
 
 storiesOf('Login Section', module)
